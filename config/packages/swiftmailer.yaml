@@ -1,0 +1,18 @@
+swiftmailer:
+    # commenter url et spool pour l'envoie de mail
+    # ne pas oublier d'activer "Accès moins sécurisé des applications"
+    # via le compte gmail utilisé ici (https://myaccount.google.com/security)
+    #url: '%env(MAILER_URL)%'
+    #spool: { type: 'memory' }
+    transport:        gmail
+    username:         cbaby@infoway.fr
+    password:         OFiWd9oLiIf3IG0
+    host:             localhost
+    port:             465
+    encryption:       ssl
+    auth-mode:        login
+    stream_options:
+      ssl:
+        allow_self_signed: true
+        verify_peer: false
+        verify_peer_name: false

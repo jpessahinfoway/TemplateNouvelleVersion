@@ -1,0 +1,9 @@
+twig:
+    default_path: '%kernel.project_dir%/templates'
+    debug: '%kernel.debug%'
+    strict_variables: '%kernel.debug%'
+    globals:
+        img_low: images/low/
+        video_low: videos/low/
+        media_path: medias/
+        media_pieces: pieces/

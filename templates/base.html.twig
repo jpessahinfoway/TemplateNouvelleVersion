@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        {% block stylesheets %}<link rel="stylesheet" href="/css/normalize/normalize.css">{% endblock %}
+    </head>
+    <body>
+        {% block header %}{%  endblock %}
+        {% block body %}{% endblock %}
+        {% block javascripts %}
+            <script src="/lib/jquery3.4.1.js"></script>
+        {% endblock %}
+    </body>
+</html>

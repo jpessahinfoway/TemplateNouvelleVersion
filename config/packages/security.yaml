@@ -1,0 +1,57 @@
+security:
+    # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
+    providers:
+        #in_memory: { memory: null }
+        # on recupère les données de l'utilisateur dans la db
+        from_database:
+            entity:
+                class: App\Entity\Main\User
+                property: login
+
+
+    firewalls:
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+        main:
+            anonymous: true
+
+            form_login:
+                check_path: user::login
+
+            #guard:
+            #    authenticators:
+            #        - App\Security\LoginFormAuthenticator
+
+            logout:
+                path: user::logout
+                target: user::login
+                # where to redirect after logout
+                # target: app_any_route
+
+            # activate different ways to authenticate
+            # https://symfony.com/doc/current/security.html#firewalls-authentication
+
+            # https://symfony.com/doc/current/security/impersonating_user.html
+            # switch_user: true
+
+    # Easy way to control access for large sections of your site
+    # Note: Only the *first* access control that matches will be used
+    access_control:
+         #- { path: ^/login$, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+         #- { path: ^/logout$, roles: IS_AUTHENTICATED_REMEMBERED }
+         #- { path: ^/$, roles: IS_AUTHENTICATED_REMEMBERED }
+         #- { path: ^/template, roles: IS_AUTHENTICATED_REMEMBERED }
+         #- { path: ^/template/create, roles: IS_AUTHENTICATED_REMEMBERED }
+         #- { path: ^/template/stage1/create, roles: IS_AUTHENTICATED_REMEMBERED }
+         #- { path: ^/profile, roles: ROLE_USER }
+
+
+
+
+
+
+    encoders:
+        App\Entity\Main\User:
+            algorithm: auto
+            cost: 12

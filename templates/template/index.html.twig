@@ -1,0 +1,37 @@
+{% extends 'template/layout/layout.html.twig' %}
+
+{% block title %}Template Accueil{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="/css/template/template_accueil.css">
+{% endblock %}
+{%  block javascripts  %}
+    {{ parent() }}
+    <script src="/js/template/index.js" type="module" defer></script>
+{% endblock %}
+{% block body %}
+{{ dump(templatesList) }}
+<div class="container">
+    <div id="template">
+        <div class="menu_window"><ul><li>template</li></ul></div>
+        <div class="workzone">
+            <div id="creation-menu">
+                <div class="button-zone">
+                    <a href="" class="button newButton">Nouveau template</a>
+                    <a href="" class="button loadButton">Importer un template</a>
+                </div>
+            </div>
+            <div class="window_parent" id="sub">
+                <div class="window_div">
+                    <div id="sub_action_menu_window_label" class="window_label">
+                        <h1></h1>
+                    </div>
+                    <div class="window_body">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

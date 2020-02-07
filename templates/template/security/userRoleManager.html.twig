@@ -1,0 +1,146 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Gestion des utilisateurs {% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('assets/css/template/security/userRoleManager.css') }}">
+{% endblock %}
+
+{% block body %}
+
+    <p>Profile de <strong id="username" data-user="{{ app.request.get('username') }}">{{ app.request.get('username') }}</strong></p>
+    <p id="result"></p>
+
+    <table>
+
+        <thead>
+
+        <tr>
+            <th></th>
+
+            <th>{{ action.name }}</th>
+        </tr>
+
+        </thead>
+
+        <tbody>
+
+        {% for role in roles %}
+            <tr>
+
+                <td>{{ role.name }}</td>
+
+                <td>
+                    <input type="checkbox" data-action="attribute_role_{{ role.id }}"
+                            {% if userRole is defined %}
+
+                                {% if userRole.name is same as(role.name) %}
+                                    checked
+                                    disabled
+                               {% endif %}
+
+                            {% endif %}
+
+                    />
+
+                    <span><img src="{{ asset('assets/img/loading_animation.gif') }}" alt="loading gif" width="20"></span>
+                </td>
+
+            </tr>
+        {% endfor %}
+
+        </tbody>
+
+    </table>
+
+
+{% endblock %}
+
+{% block javascripts %}
+
+    {{ parent() }}
+
+    <script>
+
+        $(document).ready(function () {
+
+
+            function updateUserRole(username, dataset)
+            {
+                let roleID = dataset.replace("attribute_role_", "");
+
+                $.ajax({
+                    url: "/update/" + $("#username").text() +"/role",
+                    method: "POST",
+                    data: {username: username, roleID: roleID},
+                    success: function (response)
+                    {
+                        $("input:checkbox[data-action=" + dataset +"]").next("span").css({"display" : "none"});
+
+                        $("input:checkbox[data-action=" + dataset +"]").prop("disabled", true);
+
+                        $("p#result").text("Le rôle a bien été attribué !");
+                        $("p#result").css("color", "green");
+
+
+                        $("input:checkbox").each( function (index, item) {
+
+                            if($(item).data("action") !== dataset)
+                            {
+                                $(item).prop("checked", false);
+                                $(item).prop("disabled", false);
+                            }
+
+                        });
+                    },
+                    error: function (response, status, error) {
+
+                        $("input:checkbox[data-action=" + dataset +"]").next("span").css({"display" : "none"});
+
+                        if(parseInt(response.responseText) === 1)
+                        {
+                            $("input:checkbox[data-action=" + dataset +"]").prop("checked", false);
+                            $("p#result").text("Vous n'avez pas les permissions necessaires pour attribuer un role !");
+                            $("p#result").css("color", "red");
+                        }
+
+                        else if(parseInt(response.responseText) === 2)
+                        {
+                            $("input:checkbox[data-action=" + dataset +"]").prop("checked", false);
+                            $("p#result").text("Vous ne pouvez pas vous attribuer un role inférieur ou égal à celui que vous avez actuellement !");
+                            $("p#result").css("color", "red");
+                        }
+
+                        else
+                        {
+                            $("p#result").text("Une erreur interne s'est produite !");
+                            $("p#result").css("color", "red");
+                        }
+
+
+                    }
+                });
+            }
+
+
+
+
+
+            $("input:checkbox").change(function () {
+
+                if($(this).is(':checked'))
+                {
+
+                    $(this).next("span").css({"display" : "inline-block"});
+
+                    updateUserRole($("#username").data("user"),  $(this).data('action'));
+
+                }
+
+            })
+
+        });
+
+    </script>
+{% endblock %}

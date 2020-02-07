@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+    <link rel="stylesheet" href="./css/template/reset.css">
+    <link rel="stylesheet" href="./css/template/general.css">
+    <link rel="stylesheet" href="./css/template/accueil/home.css">
+    <script src="/js/template/accueil/index.js" type="module" defer></script>
+    <title>Accueil Module Template</title>
+</head>
+<body>
+<div class="container">
+    {% include 'template/accueil/stages.html.twig' %}
+    <section>
+        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Mollitia, itaque!</p>
+        {% include 'template/accueil/actions.html.twig' %}
+    </section>
+    {% include 'template/accueil/actions-forms.html.twig' %}
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</body>
+</html>

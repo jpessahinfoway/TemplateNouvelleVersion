@@ -1,0 +1,88 @@
+
+
+
+
+
+ /**
+     * @Route(path="/update/user/permission/{action}",name="updateUserPermission", requirements={"action" = "\w+"})
+     *
+     * @param Request $request
+     * @param string $action
+     * @return Response
+     * @throws Exception
+     */
+    public function updateUserPermission(Request $request, string $action): Response
+    {
+
+        if(!is_null($request->request->get("actionID")) AND !is_null($request->request->get("subjectID")) AND !is_null($request->request->get("userID")))
+        {
+
+            $permission = $this->m_entityManager->getRepository(Permission::class)->findOneBy(["id" => $request->request->get("permissionID")]);
+            if(!$permission)
+                throw new Exception("Permission not found with permissionID '" . $request->request->get("permissionID") ."' !");
+
+
+            $user = $this->m_entityManager->getRepository(User::class)->findOneBy(["id" => $request->request->get("userID")]);
+            if(!$user)
+                throw new Exception("User not found with userID '" . $request->request->get("userID") ."' !");
+
+
+            if($action === "add")
+            {
+                $user->addPermission($permission);
+                $permission->addUser($user);
+            }
+
+            elseif ($action === "remove")
+            {
+                $user->removePermission($permission);
+                $permission->removeUser($user);
+            }
+
+
+            $this->m_entityManager->flush();
+            return new Response();
+        }
+        else
+        {
+            throw new Exception("Missing parameters !");
+        }
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+            public function updateUserRole(Request $request): Response
+            {
+
+                if(!is_null($request->request->get("roleID")) AND !is_null($request->request->get("userID")))
+                {
+
+                    $role = $this->m_entityManager->getRepository(Role::class)->findOneBy(["id" => $request->request->get("roleID")]);
+                    if(!$role)
+                        throw new Exception("Role not found with roleID '" . $request->request->get("roleID") ."' !");
+
+
+                    $user = $this->m_entityManager->getRepository(User::class)->findOneBy(["id" => $request->request->get("userID")]);
+                    if(!$user)
+                        throw new Exception("User not found with id '" . $request->request->get("userID") ."' !");
+
+
+                    $user->setRole($role);
+                    $this->m_entityManager->flush();
+
+                    return new Response();
+                }
+                else
+                {
+                    throw new Exception("Missing parameters !");
+                }
+            }

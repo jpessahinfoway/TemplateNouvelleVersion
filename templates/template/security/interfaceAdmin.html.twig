@@ -1,0 +1,45 @@
+{% extends "base.html.twig" %}
+
+{% block title %} Gestion des utilisateurs {% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+
+{% endblock %}
+
+
+{% block body %}
+
+    {% if location is same as("select") %}
+
+    <form action="{{ path('interface_admin') }}" method="post">
+
+        <h4>Liste des utilisateurs</h4>
+        <select name="user"  size="{{ users|length+2 }}" required>
+            {% for user in users %}
+                <option value="{{ user.id }}">{{ user.username }}</option>
+            {% endfor %}
+        </select>
+
+        <button type="submit">Valider</button>
+
+    </form>
+
+    {% else %}
+
+    <div>
+
+        <a href="{{ path('updateUserRole', {'username': userSelected.username}) }}">Modifier le role</a> <br>
+        <a href="{{ path('updateUserPermission', {'username': userSelected.username}) }}">Modifier les permissions</a>
+
+    </div>
+
+    {% endif %}
+
+{% endblock %}
+
+
+{% block javascripts %}
+    {{ parent() }}
+
+{% endblock %}

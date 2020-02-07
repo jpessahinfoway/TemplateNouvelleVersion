@@ -1,0 +1,17 @@
+{% block modal %}
+    <div class="modal {%  block modal_classes %}{% endblock %}" {% block modal_id %}{% endblock %} >
+        <div class="modal__top-menu">
+            <h2 class="modal__top-menu__title">
+                {% block title %}{% endblock %}
+            </h2>
+            <div class="modal__top-menu__actions">
+                <span class="modal__top-menu__actions--close"><i class="fal fa-times"></i></span>
+            </div>
+        </div>
+        <div class="modal__content">
+            {% block modal_content %}{%  endblock %}
+        </div>
+
+
+    </div>
+{% endblock modal %}

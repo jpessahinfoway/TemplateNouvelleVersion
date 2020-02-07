@@ -1,0 +1,67 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Gestion des utilisateurs {% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('assets/css/template/security/userPermissionManager.css') }}">
+{% endblock %}
+
+{% block body %}
+
+    <p>Profile de <strong id="username" data-user="{{ app.request.get('username') }}">{{ app.request.get('username') }}</strong></p>
+    <p id="result"></p>
+
+    <table>
+
+        <thead>
+
+        <tr>
+            <th></th>
+
+            {% for action in actions %}
+                <th>{{ action | split('_')[1] }}</th>
+            {% endfor %}
+
+        </tr>
+
+        </thead>
+
+        <tbody>
+
+            {% for key, permissionAction in userPermissions %}
+                <tr>
+                    <td>{{ key  | split('_')[1] }}</td>
+                        {% for action in actions %}
+                            {% set actionId = action | split('_')[0] %}
+                            {% set subjectId = key | split('_')[0] %}
+                            {% set actionName = action | split('_')[1] %}
+                            <td>
+                                <input type="checkbox" data-action="action_{{ actionId }}_subject_{{ subjectId }}"
+
+                                    {% for key, value in permissionAction %}
+
+                                        {% if value is same as(actionName) %}
+                                            checked
+                                        {% endif %}
+
+                                    {% endfor %}
+
+                                />
+
+                                <span><img src="{{ asset('assets/img/loading_animation.gif') }}" alt="loading gif" width="20"></span>
+                            </td>
+                        {% endfor %}
+                </tr>
+            {% endfor %}
+
+        </tbody>
+
+    </table>
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('assets/js/template/security/userPermissionManager.js') }}"></script>
+{% endblock %}

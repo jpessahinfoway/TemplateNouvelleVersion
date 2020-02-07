@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href=" {{ asset('assets/lib/fontawesome-pro-5.10.2-web/css/all.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href=" {{ asset('assets/css/v2/reset.css') }}">
+    <link rel="stylesheet" href=" {{ asset('assets/css/v2/general.css') }}">
+    <link rel="stylesheet" href=" {{ asset('assets/css/v2/stage2.css') }}">
+    <link rel="stylesheet" href=" {{ asset('assets/css/v2/classes.css') }} ">
+    <script src=" {{ asset('assets/js/template/v2/template/index.js') }} " type="module" defer></script>
+
+    <title>Menu du module Template</title>
+</head>
+<body>
+<main>
+    <nav>
+        <ul>
+            {% for toolbox, tool in toolboxes %}
+                <li>
+                    <p>{{ toolbox }}</p>
+
+                    <ul {% if toolbox is same as("Fichier") %} class="template-menu" {% endif %}>
+
+                        {% for toolName, toolData in tool %}
+                            <li {% if toolbox is not same as("Edition") %} title="{{ toolName }}" {% else %} data-modal="{{ toolData['data-attribute'] }} {% endif %}">
+                                <i class="{{ toolData['class'] }}"></i><p>{{ toolName }}</p>
+                            </li>
+                        {% endfor %}
+
+                    </ul>
+                </li>
+            {% endfor %}
+
+
+            <!-- <li><p>Outils</p>
+                <ul>
+                    <li><i class="fal fa-plus-square"></i><p>Ajouter une zone</p></i>
+                        <ul>
+                            <li title="Zone Texte"><i class="fal fa-text"></i><p>Zone texte</p></li>
+                            <li title="Zone Prix"><i class="fal fa-euro-sign"></i><p>Zone prix</p></li>
+                            <li title="Zone Media"><i class="fal fa-image"></i><p>Zone Médias</p></li>
+                        </ul>
+                    </li>
+
+                    <li title="Déplacer"><i class="fal fa-arrows"></i><p>Déplacer</p></li>
+                    <li title="Supprimer"><i class="fal fa-trash-alt"></i><p>Supprimer</p></li>
+                    <li title="Dupliquer"><i class="fal fa-copy"></i><p>Dupliquer</p></li>
+                    <li title="Transformation" class="disabled"><i class="fal fa-vector-square"></i><p>Transformation manuelle</p></li>
+                    <li title="Arranger"><i class="fal fa-layer-group"></i><p>Arranger</p>
+                        <ul>
+                            <li title="Avancer une zone"><i class="fal fa-layer-plus"></i><p>Avancer une Zone</p></li>
+                            <li title="Reculer une zone"><i class="fal fa-layer-minus"></i><p>Reculer une zone</p></li>
+                            <li title="Mettre au premier plan"><i class="fal fa-bring-front"></i><p>Mettre au premier plan</p></li>
+                            <li title="Mettre au dernier plan"><i class="fal fa-send-back"></i><p>Mettre au dernier plan</p></li>
+                        </ul>
+                    </li>
+                    <li title="Agrandir"><i class="fal fa-search-plus"></i><p>Agrandir</p></li>
+                    <li title="Diminuer"><i class="fal fa-search-minus"></i><p>Diminuer</p></li>
+                </ul>
+            </li> -->
+        </ul>
+        <div class="identity">
+            <p>Nom du template: {{ templateName }}</p>
+            <span>Ici la date de la derniére sauvegarde</span>
+        </div>
+    </nav>
+    <div class="toolbar">
+        <div class="modal-toolbar" id="modal-toolbar">
+            <ul>
+                <li data-modal="background"><span>Arrière plan</span><i class="fal fa-image"></i></li>
+                <li data-modal="text"><span>Texte</span><i class="fal fa-text"></i></li>
+                <li data-modal="price"><span>Prix</span><i class="fal fa-euro-sign"></i></li>
+                <li data-modal="medias"><span>Médias</span><i class="fal fa-photo-video"></i></li>
+            </ul>
+        </div>
+        <div class="tools">
+            <ul>
+                <!--<li title="Ajouter une zone"><span>Ajouter une zone</span><i class="fal fa-plus-square"></i>
+                    <ul>
+                        <li title="Zone Texte"><span>Texte</span><i class="fal fa-text"></i></li>
+                        <li title="Zone Prix"><span>Prix</span><i class="fal fa-euro-sign"></i></li>
+                        <li title="Zone Media"><span>Médias</span><i class="fal fa-image"></i></li>
+                    </ul>
+                </li>
+                <li title="Déplacer"><span>Déplacer</span><i class="fal fa-arrows bold"></i></li>
+                <li title="Supprimer"><span>Supprimer</span><i class="fal fa-trash-alt"></i></li>
+                <li title="Dupliquer"><span>Dupliquer</span><i class="fal fa-copy"></i></li>
+                <li title="Transformation"><span>Transformation</span><i class="fal fa-vector-square"></i></li>
+                <li title="Arranger"><span>Déplacer</span><i class="fal fa-layer-group"></i>
+                    <ul>
+                        <li title="Avancer une zone"><span>Avancer une zone</span><i class="fal fa-layer-plus"></i></li>
+                        <li title="Reculer une zone"><span>Reculer une zone</span><i class="fal fa-layer-minus"></i></li>
+                        <li title="Mettre au premier plan"><span>Mettre au premier plan</span><i class="fal fa-bring-front"></i></li>
+                        <li title="Mettre en arriere plan"><span>Mettre au dernier plan</span><i class="fal fa-send-back"></i></li>
+                    </ul>
+                </li>
+                <li title="Agrandir" id="enlarge"><span>Agrandir</span><i class="fal fa-search-plus"></i></li>
+                <li title="Diminuer" id="decrease"><span>Diminuer</span><i class="fal fa-search-minus"></i></li>
+                <li id="toggle-zone"><span>Masquer les zones</span><i class="fal fa-eye"></i></li>-->
+            </ul>
+        </div>
+    </div>
+    <section>
+        <div class="container-zone" id="container-zone">
+            <!--<div class="zone" id="zone-1" data-type="zone">
+                <div class="sub-zone price" data-type="price" data-name="zone-price-1">
+                    <div class="prix6">
+                        <span class="unite6">22</span>
+                        <span class="euro6">€</span>
+                        <span class="centime6">20</span>
+                    </div>
+                </div>
+                <div class="sub-zone text text-1" id="text-1" data-type="text" data-name="zone-text-1"><p class="classe-2" contenteditable>Lorem ipsum dolor sit amet</p></div>
+                <div class="sub-zone medias" id="media-1" data-type="medias" data-name="zone-media-1"></div>
+            </div>
+            <div class="zone" id="zone-2" data-type="zone"></div>!-->
+        </div>
+    </section>
+</main>
+<!-----------------------INFOS-------------------->
+<div class="infos none">
+    <span class="close" title="Fermer"><i class="fal fa-times"></i></span>
+    <div>
+        <h2>Infos zone</h2>
+        <ul class="links">
+            <li data-type="associate" title="Associer des zones"><span>Associer des Zones</span></li>
+        </ul>
+        <div class="input-group">
+            <label for="name">Nom</label>
+            <input type="text" name="name" id="name">
+        </div>
+        <div class="input-group">
+            <label for="type">Type</label>
+            <select name="type" id="type">
+                <option value="medias">Média</option>
+                <option value="price">Prix</option>
+                <option value="text">Texte</option>
+            </select>
+        </div>
+        <div class="container-input">
+            <div class="input-group">
+                <label for="posX">Position en X</label>
+                <input type="text" name="posX" id="posX">
+            </div>
+            <div class="input-group">
+                <label for="posY">Position en Y</label>
+                <input type="text" name="posY" id="posY">
+            </div>
+        </div>
+        <div class="container-input">
+            <div class="input-group">
+                <label for="width">Largeur</label>
+                <input type="text" name="width" id="width">
+            </div>
+            <div class="input-group">
+                <label for="height">Hauteur</label>
+                <input type="text" name="height" id="height">
+            </div>
+        </div>
+    </div>
+</div>
+<!-------------------------BACKGROUND-------------------->
+<div class="modal background none" id="background">
+    <div class="popup">
+        <span class="close" title="Fermer"><i class="fal fa-times"></i></span>
+        <div class="miniature">
+            <h2>Choisissez vos zones<span>Masquer</span></h2>
+            <div class="container">
+                <div data-id="container-zone"></div>
+            </div>
+        </div>
+        <div class="upload-background">
+            <h2>uploader une image<span>Masquer</span></h2>
+            <div class="container">
+                <form method="" action="" id="upload-background">
+                    <div class="file-group">
+                        <label for="files">Uploader</label>
+                        <input type="file" name="files[]" id="files" multiple>
+                        <p>0 fichier sélectionné</p>
+                    </div>
+                    <div class="button-group">
+                        <button class="btn">valider</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="list-background">
+            <h2>Choisissez une image</h2>
+            <div>
+                <div class="media">
+                    <img src="./assets/background/fond_gris.png">
+                    <span>Lorem ipsum dolor</span>
+                </div>
+            </div>
+        </div>
+        <div class="radios-group">
+            <h2>Choisissez une couleur</h2>
+            <div class="radio">
+                <input type="radio" name="background-color" id="transparent" value="transparent" checked>
+                <label for="transparent">Transparent</label>
+            </div>
+            <div class="radio">
+                <input type="radio" name="background-color" id="color" value="#000000">
+                <label for="color">Couleur</label>
+                <input type="color">
+            </div>
+        </div>
+        <div class="button-group">
+            <button class="btn">valider</button>
+        </div>
+    </div>
+</div>
+<!-------------------------MEDIAS--------------------->
+<div class="modal medias none" id="medias">
+    <div class="popup">
+        <span class="close" title="Fermer"><i class="fal fa-times"></i></span>
+        <div class="miniature">
+            <h2>Choisissez vos zones<span>Masquer</span></h2>
+            <div class="container">
+                <div data-id="container-zone"></div>
+            </div>
+        </div>
+        <div class="management-medias">
+            <h2>GESTION DES MEDIAS<span>Masquer</span></h2>
+            <div class="container">
+                <form action="" method="">
+                    <div class="input-group">
+                        <label label="search">Filtrer par produit</label>
+                        <input type="text" name="search" id="search">
+                    </div>
+                    <div class="input-group">
+                        <label>Filtrer par catégorie</label>
+                        <select name="categories">
+                            <option value="">Aucune catégorie</option>
+                            <option value="1">Catégorie n°1</option>
+                            <option value="2">Catégorie n°2</option>
+                            <option value="4">Catégorie n°4</option>
+                            <option value="6">Catégorie n°6</option>
+                        </select>
+                    </div>
+                    <div class="radios-group">
+                        <span>Filtrer par média</span>
+                        <div class="radio">
+                            <input type="radio" name="type" id="image" value="image" checked>
+                            <label for="image">Image</label>
+                        </div>
+                        <div class="radio">
+                            <input type="radio" name="type" id="video" value="video">
+                            <label for="video">Vidéo</label>
+                        </div>
+                    </div>
+                </form>
+                <div class="list-medias">
+                    <div data-type="image" data-categories="1" data-name="donut_caramel.png"><div style="background-image: url(./assets/products/donut_caramel.png)"></div><span>Lorem ipsum dolor</span></div>
+                    <div data-type="image" data-categories="1" data-name="mix_mania_granola.png"><div style="background-image: url(./assets/products/mix_mania_granola.png)"></div><span>Lorem ipsum dolor</span></div>
+                    <div data-type="image" data-categories="4" data-name="titre_Desserts.png"><div style="background-image: url(./assets/products/titre_Desserts.png)"></div><span>Lorem ipsum dolor</span></div>
+                    <div data-type="image" data-categories="6" data-name="titre_menus.png"><div style="background-image: url(./assets/products/titre_menus.png)"></div><span>Lorem ipsum dolor</span></div>
+                </div>
+                <div class="button-group"><button class="btn">valider</button></div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-----------------------------------PRICE----------------------------->
+<div class="modal price none" id="price">
+    <div class="popup">
+        <span class="close" title="Fermer"><i class="fal fa-times"></i></span>
+        <div class="miniature">
+            <h2>Choisissez vos zones<span>Masquer</span></h2>
+            <div class="container">
+                <div data-id="container-zone"></div>
+            </div>
+        </div>
+        <h2>GESTION DES PRIX</h2>
+        <div class="list-prices">
+            <div>
+                <div class="prix6">
+                    <span class="unite6">2</span>
+                    <span class="euro6">€</span>
+                    <span class="centime6">50</span>
+                </div>
+            </div>
+            <div>
+                <div class="prix6">
+                    <span class="unite6">2</span>
+                    <span class="euro6">€</span>
+                    <span class="centime6">50</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-------------------------------ASSOCIATE----------------------------->
+<div class="modal associate none" id="associate">
+    <div class="popup">
+        <span class="close" title="Fermer"><i class="fal fa-times"></i></span>
+        <div id="lock">
+            <h2>VERROUILLER LA ZONE</h2>
+            <form action="" method="">
+                <div class="switch-group">
+                    <label class="switch">
+                        <input type="checkbox" id="switch">
+                        <span class="slider"></span>
+                    </label>
+                    <span>Non vérouillé</span>
+                </div>
+            </form>
+        </div>
+        <div id="zone">
+            <h2>ASSOCIER DES ZONES</h2>
+            <form action="" method="" id="zones-associate">
+                <div>
+                    <h3>Zones Affectées</h3>
+                    <div class="loaded"></div>
+                </div>
+                <div class="controls">
+                    <span class="add" title="Ajouter"><i class="fas fa-reply"></i></span>
+                    <span class="remove" title="Enlever"><i class="fas fa-share"></i></span>
+                </div>
+                <div>
+                    <h3>Zones Disponibles</h3>
+                    <div class="available">
+                        <span class="price" data-id="2">Prix-2</span>
+                        <span class="text" data-id="3">Texte-5</span>
+                    </div>
+                </div>
+                <div class="button-group">
+                    <button class="btn">Valider</button>
+                </div>
+            </form>
+        </div>
+        <div id="categories">
+            <h2>ASSOCIER DES CATEGORIES</h2>
+            <span id="toggle" data-complete="none">Tout sélectionner</span>
+            <form action="" method="" id="categories-associate">
+                <div>
+                    <div class="checkbox">
+                        <input type="checkbox" name="category-1" id="category-1" value="25">
+                        <label for="category-1">Catégorie n°1</label>
+                    </div>
+                    <div class="checkbox">
+                        <input type="checkbox" name="category-2" id="category-2" value="45">
+                        <label for="category-2">Catégorie n°2</label>
+                    </div>
+                </div>
+                <div class="button-group">
+                    <button class="btn">Valider</button>
+                </div>
+            </form>
+        </div>
+        <div id="products">
+            <h2>ASSOCIER UN PRODUIT</h2>
+            <form action="" method="" id="">
+                <div class="input-group">
+                    <label>Liste des produits</label>
+                    <select name="products">
+                        <option value="">Associer à aucun produit</option>
+                        <option value="2" data-category="25">Lorem ipsum dolor</option>
+                        <option value="5" data-category="25">Lorem ipsum dolor</option>
+                        <option value="6" data-category="25">Lorem ipsum dolor</option>
+                        <option value="18" data-category="45">Lorem ipsum dolor</option>
+                        <option value="35" data-category="45">Lorem ipsum dolor</option>
+                        <option value="32" data-category="25">Lorem ipsum dolor</option>
+                    </select>
+                </div>
+                <div class="button-group">
+                    <button class="btn">Valider</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!----------------------------------NEW---------------------------->
+<div class="modal none" id="new">
+    <div class="popup">
+        <span class="close" title="Fermer"><i class="fal fa-times"></i></span>
+        <h2>Nouveau</h2>
+        <form action="" method="">
+            <div class="radios-group">
+                <span>Orientation du template</span>
+                <div class="radio">
+                    <input type="radio" name="orientation" id="horizontal" checked>
+                    <label for="horizontal">Horizontal</label>
+                </div>
+                <div class="radio">
+                    <input type="radio" name="orientation" id="vertical">
+                    <label for="vertical">Vertical</label>
+                </div>
+            </div>
+            <div class="input-group">
+                <label for="name">Nom du template</label>
+                <input type="text" name="name" id="name">
+            </div>
+            <div>
+                <button class="btn">valider</button>
+            </div>
+        </form>
+    </div>
+</div>
+<!--------------------------------OPEN------------------------------->
+<div class="modal none" id="open">
+    <div class="popup">
+        <span class="close" title="Fermer"><i class="fal fa-times"></i></span>
+        <h2>Ouvrir</h2>
+        <form action="" method="">
+            <div class="radios-group">
+                <span>Filtrer par orientation</span>
+                <div class="radio">
+                    <input type="radio" name="orientation" id="horizontal" checked>
+                    <label for="horizontal">Horizontal</label>
+                </div>
+                <div class="radio">
+                    <input type="radio" name="orientation" id="vertical">
+                    <label for="vertical">Vertical</label>
+                </div>
+            </div>
+            <div class="input-group">
+                <label for="templates">Liste des templates</label>
+                <select name="templates" id="templates">
+                    <option value="">Nom du template</option>
+                </select>
+            </div>
+            <div>
+                <button class="btn">valider</button>
+            </div>
+        </form>
+    </div>
+</div>
+<!----------------------------TEXT EDITOR----------------------------->
+<div class="modal text-editor none" id="text">
+    <div class="popup">
+        <span class="close" title="Fermer"><i class="fal fa-times"></i></span>
+        <div class="miniature">
+            <h2>Choisissez vos zones<span>Masquer</span></h2>
+            <div class="container">
+                <div data-id="container-zone"></div>
+            </div>
+        </div>
+        <div class="classes">
+            <h2>choisir un style<span>Masquer</span></h2>
+            <div class="container">
+                <div>
+                    <div>
+                        <span>Nom du style</span>
+                        <p class="classe-1">Ici la description de votre zone</p>
+                    </div>
+                    <div>
+                        <span>Nom du style</span>
+                        <p class="classe-2">Ici la description de votre zone</p>
+                    </div>
+                    <div>
+                        <span>Nom du style</span>
+                        <p class="classe-3">Ici la description de votre zone</p>
+                    </div>
+                    <div>
+                        <span>Nom du style</span>
+                        <p class="classe-4">Ici la description de votre zone</p>
+                    </div>
+                    <div>
+                        <span>Nom du style</span>
+                        <p class="classe-5">Ici la description de votre zone</p>
+                    </div>
+                    <div>
+                        <span>Nom du style</span>
+                        <p class="classe-6">Ici la description de votre zone</p>
+                    </div>
+                    <div>
+                        <span>Nom du style</span>
+                        <p class="classe-7">Ici la description de votre zone</p>
+                    </div>
+                    <div>
+                        <span>Nom du style</span>
+                        <p class="classe-8">Ici la description de votre zone</p>
+                    </div>
+                </div>
+                <div class="input-group">
+                    <button class="btn">valider</button>
+                </div>
+            </div>
+        </div>
+        <form action="" method="" id="form-text">
+            <h2>créer votre style<span>Masquer</span></h2>
+            <div class="container">
+                <div class="input-group">
+                    <label for="title">Titre</label>
+                    <input type="text" name="title" id="title" required>
+                </div>
+                <div class="input-group">
+                    <label for="font-family">Police</label>
+                    <select name="font-family" id="font-family">
+                        <option value="Arial">Arial</option>
+                        <option value="Georgia">Georgia</option>
+                        <option value="Times New Roman">Times New Roman</option>
+                        <option value="Verdana">Verdana</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label for="font-size">Taille en pixel</label>
+                    <input type="number" name="font-size" id="font-size" min="6" step="1" value="15">
+                </div>
+                <div class="input-group">
+                    <label for="color">Couleur</label>
+                    <div>
+                        <input type="color" name="color" id="color">
+                        <p contenteditable>#000000</p>
+                        <p class="message error hidden">Ce champ est incorrect. Merci de le corriger</p>
+                    </div>
+                </div>
+                <div class="input-group">
+                    <label for="rotate">Rotation</label>
+                    <input type="number" name="rotate" id="rotate">
+                </div>
+                <div class="radios-group">
+                    <div class="radio">
+                        <input type="radio" name="text-align" id="left" value="left" checked>
+                        <label for="left" class="left"></label>
+                        <i class="fal fa-align-left" title="Aligner texte à gauche"></i>
+                    </div>
+                    <div class="radio">
+                        <input type="radio" name="text-align" id="center" value="center">
+                        <label for="center" class="center"></label>
+                        <i class="fal fa-align-center" title="Aligner texte au centre"></i>
+                    </div>
+                    <div class="radio">
+                        <input type="radio" name="text-align" id="right" value="right">
+                        <label for="right"></label>
+                        <i class="fal fa-align-right" title="Aligner texte à droite"></i>
+                    </div>
+                    <div class="radio">
+                        <input type="radio" name="text-align" id="justify" value="justify">
+                        <label for="justify"></label>
+                        <i class="fal fa-align-justify" title="Justifier le texte"></i>
+                    </div>
+                    <div class="radio">
+                        <input type="radio" name="text-decoration" id="initial" value="initial">
+                        <label for="initial"></label>
+                        <i class="fal fa-text" title="Initial"></i>
+                    </div>
+                    <div class="radio">
+                        <input type="radio" name="text-decoration" id="underline" value="underline">
+                        <label for="underline"></label>
+                        <i class="fal fa-underline" title="Souligné"></i>
+                    </div>
+                    <div class="radio">
+                        <input type="radio" name="text-decoration" id="line-through" value="line-through">
+                        <label for="line-through"></label>
+                        <i class="fal fa-strikethrough" title="Barré"></i>
+                    </div>
+                    <div class="checkbox">
+                        <input type="checkbox" name="font-weight" id="bold" value="bold">
+                        <label for="bold"></label>
+                        <i class="fas fa-bold" title="Gras"></i>
+                    </div>
+                    <div class="checkbox">
+                        <input type="checkbox" name="font-style" id="italic" value="italic">
+                        <label for="italic"></label>
+                        <i class="fas fa-italic" title="Italique"></i>
+                    </div>
+                </div>
+                <div>
+                    <button class="btn">valider</button>
+                </div>
+                <div class="preview" id="text-preview"><p>Lorem ipsum dolor sit amet</p></div>
+            </div>
+        </form>
+
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<!--<script src="js/utilities.js"></script>
+<script src="js/ModalManager.js"></script>
+<script src="js/associate.js"></script>
+<script src="js/Background.js"></script>
+<script src="js/Text.js"></script>
+<script src="js/Medias.js"></script>
+<script src="js/Price.js"></script>-->
+<script>
+    $(_ => {
+        // On initialise les différents modules du template
+        /*let price = new Price()
+        let medias = new Medias()
+        let text = new Text()
+        let background = new Background()
+        text.run()
+        price.run()
+        medias.run()
+        background.run()*/
+    })
+    // Lors d'un clic sur l'une des icônes des modal
+    $('#modal-toolbar ul li, nav ul li:nth-child(2) ul li').on('click', e => {
+        // Type de la modal à ouvrir
+        let element = $(e.currentTarget).data('modal')
+        // On affiche la modal et on génére un miniature du template selon le type de zone
+        switch(element) {
+            case 'price':
+                let priceModal = new Modal(element)
+                priceModal.init()
+                break
+            case 'medias':
+                let mediasModal = new Modal(element)
+                mediasModal.init()
+                break
+            case 'text':
+                let textModal = new Modal(element)
+                textModal.init()
+                break
+            case 'background':
+                let backgroundModal = new Modal(element)
+                backgroundModal.init()
+                break
+        }
+    })
+</script>
+</body>
+</html>

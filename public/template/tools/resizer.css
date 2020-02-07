@@ -1,0 +1,34 @@
+.zoneResizer{
+    height:5px;
+    width:5px;
+    position:absolute;
+    background-color: transparent;
+    border:1px solid black;
+}
+
+.tl{
+  cursor : nw-resize;
+}
+
+.tr{
+    cursor : nesw-resize;
+}
+
+.mt, .mb{
+    cursor :  n-resize;
+}
+
+.ml, .mr{
+    cursor : w-resize;
+}
+
+.bl{
+    cursor : ne-resize;
+}
+
+.br{
+    cursor : se-resize;
+}
+
+
+

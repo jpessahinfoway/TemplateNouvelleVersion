@@ -1,0 +1,170 @@
+SERVER_URL: 'mysql://root:w@}Gyf7bV2BV{:z$@127.0.0.1:3306/'
+ENSEIGNES:
+    quick:
+        database_name: quicknet
+        is_copied: true
+        url: 'mysql://root:w@}Gyf7bV2BV{:z$@127.0.0.1:3306/quicknet'
+    5asec:
+        database_name: 5asec
+        is_copied: true
+        url: 'mysql://root:w@}Gyf7bV2BV{:z$@127.0.0.1:3306/5asec'
+    arche:
+        database_name: arche
+        is_copied: true
+        url: 'mysql://root:w@}Gyf7bV2BV{:z$@127.0.0.1:3306/arche'
+    domtom:
+        database_name: domtom
+        is_copied: true
+        url: 'mysql://root:w@}Gyf7bV2BV{:z$@127.0.0.1:3306/domtom'
+    kfc:
+        database_name: kfc
+        is_copied: true
+        url: 'mysql://root:w@}Gyf7bV2BV{:z$@127.0.0.1:3306/kfc'
+    phileas:
+        database_name: phileas
+        is_copied: true
+        url: 'mysql://root:w@}Gyf7bV2BV{:z$@127.0.0.1:3306/phileas'
+    pizzatime:
+        database_name: pizzatime
+        is_copied: true
+        url: 'mysql://root:w@}Gyf7bV2BV{:z$@127.0.0.1:3306/pizzatime'
+    generique:
+        database_name: generique
+        is_copied: true
+        url: 'mysql://root:w@}Gyf7bV2BV{:z$@127.0.0.1:3306/generique'
+    hopital:
+        database_name: hopital
+        is_copied: true
+        url: 'mysql://root:w@}Gyf7bV2BV{:z$@127.0.0.1:3306/hopital'
+    laplace:
+        database_name: laplace
+        is_copied: true
+        url: 'mysql://root:w@}Gyf7bV2BV{:z$@127.0.0.1:3306/laplace'
+    pizzahut:
+        database_name: pizzahut
+        is_copied: true
+        url: 'mysql://root:w@}Gyf7bV2BV{:z$@127.0.0.1:3306/pizzahut'
+    bk_domtom:
+        database_name: bk_domtom
+        is_copied: true
+        url: 'mysql://root:w@}Gyf7bV2BV{:z$@127.0.0.1:3306/bk_domtom'
+    croque_mie:
+        database_name: croque_mie
+        is_copied: true
+        url: 'mysql://root:w@}Gyf7bV2BV{:z$@127.0.0.1:3306/croque_mie'
+    swc:
+        database_name: swc
+        is_copied: true
+        url: 'mysql://root:w@}Gyf7bV2BV{:z$@127.0.0.1:3306/swc'
+    gojohnnygo:
+        database_name: gojohnnygo
+        is_copied: true
+        url: 'mysql://root:w@}Gyf7bV2BV{:z$@127.0.0.1:3306/gojohnnygo'
+    argan:
+        database_name: argan
+        is_copied: true
+        url: 'mysql://root:w@}Gyf7bV2BV{:z$@127.0.0.1:3306/argan'
+    cafeteria:
+        database_name: cafeteria
+        is_copied: true
+        url: 'mysql://root:w@}Gyf7bV2BV{:z$@127.0.0.1:3306/cafeteria'
+    atable:
+        database_name: atable
+        is_copied: true
+        url: 'mysql://root:w@}Gyf7bV2BV{:z$@127.0.0.1:3306/atable'
+    bara:
+        database_name: bara
+        is_copied: true
+        url: 'mysql://root:w@}Gyf7bV2BV{:z$@127.0.0.1:3306/bara'
+    centerparc:
+        database_name: centerparc
+        is_copied: true
+        url: 'mysql://root:w@}Gyf7bV2BV{:z$@127.0.0.1:3306/centerparc'
+    confluence:
+        database_name: confluence
+        is_copied: true
+        url: 'mysql://root:w@}Gyf7bV2BV{:z$@127.0.0.1:3306/confluence'
+    courtepaille:
+        database_name: courtepaille
+        is_copied: true
+        url: 'mysql://root:w@}Gyf7bV2BV{:z$@127.0.0.1:3306/courtepaille'
+    delicia:
+        database_name: delicia
+        is_copied: true
+        url: 'mysql://root:w@}Gyf7bV2BV{:z$@127.0.0.1:3306/delicia'
+    factory:
+        database_name: factory
+        is_copied: true
+        url: 'mysql://root:w@}Gyf7bV2BV{:z$@127.0.0.1:3306/factory'
+    fauchon:
+        database_name: fauchon
+        is_copied: true
+        url: 'mysql://root:w@}Gyf7bV2BV{:z$@127.0.0.1:3306/fauchon'
+    masquemenos:
+        database_name: masquemenos
+        is_copied: true
+        url: 'mysql://root:w@}Gyf7bV2BV{:z$@127.0.0.1:3306/masquemenos'
+    redhippo:
+        database_name: redhippo
+        is_copied: true
+        url: 'mysql://root:w@}Gyf7bV2BV{:z$@127.0.0.1:3306/redhippo'
+    boiteapizza:
+        database_name: boiteapizza
+        is_copied: true
+        url: 'mysql://root:w@}Gyf7bV2BV{:z$@127.0.0.1:3306/boiteapizza'
+    victor:
+        database_name: victor
+        is_copied: true
+        url: 'mysql://root:w@}Gyf7bV2BV{:z$@127.0.0.1:3306/victor'
+    panorama:
+        database_name: panorama
+        is_copied: true
+        url: 'mysql://root:w@}Gyf7bV2BV{:z$@127.0.0.1:3306/panorama'
+    areaspizzahut:
+        database_name: areaspizzahut
+        is_copied: true
+        url: 'mysql://root:w@}Gyf7bV2BV{:z$@127.0.0.1:3306/areaspizzahut'
+    belharra:
+        database_name: belharra
+        is_copied: true
+        url: 'mysql://root:w@}Gyf7bV2BV{:z$@127.0.0.1:3306/belharra'
+    cotesushi:
+        database_name: cotesushi
+        is_copied: true
+        url: 'mysql://root:w@}Gyf7bV2BV{:z$@127.0.0.1:3306/cotesushi'
+    leclerc:
+        database_name: leclerc
+        is_copied: true
+        url: 'mysql://root:w@}Gyf7bV2BV{:z$@127.0.0.1:3306/leclerc'
+    pepperico:
+        database_name: pepperico
+        is_copied: true
+        url: 'mysql://root:w@}Gyf7bV2BV{:z$@127.0.0.1:3306/pepperico'
+    panasia:
+        database_name: panasia
+        is_copied: true
+        url: 'mysql://root:w@}Gyf7bV2BV{:z$@127.0.0.1:3306/panasia'
+    colombus:
+        database_name: colombus
+        is_copied: true
+        url: 'mysql://root:w@}Gyf7bV2BV{:z$@127.0.0.1:3306/colombus'
+    jab_baker:
+        database_name: jab_baker
+        is_copied: true
+        url: 'mysql://root:w@}Gyf7bV2BV{:z$@127.0.0.1:3306/jab_baker'
+    los_pollos:
+        database_name: los_pollos
+        is_copied: true
+        url: 'mysql://root:w@}Gyf7bV2BV{:z$@127.0.0.1:3306/los_pollos'
+    6treize:
+        database_name: 6treize
+        is_copied: true
+        url: 'mysql://root:w@}Gyf7bV2BV{:z$@127.0.0.1:3306/6treize'
+    debug:
+        database_name: debug
+        is_copied: true
+        url: 'mysql://root:w@}Gyf7bV2BV{:z$@127.0.0.1:3306/debug'
+    rice_trotters:
+        database_name: rice_trotters
+        is_copied: true
+        url: 'mysql://root:w@}Gyf7bV2BV{:z$@127.0.0.1:3306/rice_trotters'

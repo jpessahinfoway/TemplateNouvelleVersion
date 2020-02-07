@@ -1,0 +1,189 @@
+{% extends 'template/layout/layout.html.twig' %}
+    {% block stylesheets %}
+    {{ parent() }}
+        <link rel="stylesheet" href="{{ asset('assets/css/template/reset.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/css/template/general.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/css/template/style.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/css/template/tools/resizer.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/css/template/tools/dragger.css') }}">
+    {%  endblock %}
+    {% block javascripts %}
+        <script src="{{ asset('assets/js/template/create/index.js') }}" type="module" defer></script>
+    {% endblock %}
+    {%  block title %}
+    <title>Menu du module Template</title>
+    {%  endblock %}
+{% block body %}
+        <main>
+            <nav class="bloc-menu">
+                <ul>
+                    <li><p>Fichier</p>
+                        <ul>
+                            <li title="Nouveau"><span class="new"></span><p>Nouveau</p></li>
+                            <li title="Ouvrir"><span class="open"></span><p>Ouvrir</p></li>
+                            <li title="Enregistrer"><span class="save"></span><p>Enregistrer</p></li>
+                            <li title="Quitter"><span class="exit"></span><p>Quitter</p></li>
+                        </ul>
+                    </li>
+                    <li><p>Outils</p>
+                        <ul>
+                            <li><span title="Ajouter" class="create"></span><p>Créer</p></li>
+                            <li><span title="Déplacer" class="move"></span><p>Déplacer</p></li>
+                            <li><span title="Supprimer" class="delete"></span><p>Supprimer</p></li>
+                            <li><span title="Dupliquer" class="duplicate"></span><p>Dupliquer</p></li>
+                            <li class="disabled"><span title="Transformation" class="transform"></span><p>Transformation manuelle</p></li>
+                            <li><span title="Arranger" class="arrangement"></span><p>Arranger une zone</p>
+                                <ul>
+                                    <li><span class="forward-1"></span><p>Texte provisoire</p></li>
+                                    <li><span class="backward-1"></span><p>Texte provisoire</p></li>
+                                    <li><span class="forward-2"></span><p>Mettre au premier plan</p></li>
+                                    <li><span class="backward-2"></span><p>Mettre au dernier plan</p></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <div class="identity">
+                    <p>{{ templateName }}</p>
+                    <span>Ici la date de la derniére sauvegarde</span>
+                </div>
+            </nav>
+            <section id="template__workzone__templateZone" data-n="{{ templateName }}" data-f="{{ orientation }}">
+                {# <div class="zone" id="zone-1"><span>Zone 1</span></div> #}
+            </section>
+        </main>
+        <div class="toolbar bloc-menu" id="toolbar">
+            <div class="tools">
+                <ul>
+                   {# <li class="active-tool"><span title="Ajouter" class="create"><i class="fal fa-plus-square"></i></span></li>
+                    <li><span title="Déplacer" class="move"><i class="fal fa-arrows"></i></span></li>
+                    <li><span title="Supprimer" class="delete"><i class="fal fa-trash-alt"></i></span></li>
+                    <li><span title="Dupliquer" class="duplicate"><i class="fal fa-copy"></i></span></li>
+                    <li><span title="Transformation" class="transform disabled"><i class="fal fa-vector-square"></i></span></li>
+                    <li><span title="Arranger" class="arrangement"><i class="fal fa-layer-group"></i></span>
+                        <ul>
+                            <li><span class="forward-1"></span></li>
+                            <li><span class="backward-1"></span></li>
+                            <li><span class="forward-2"></span></li>
+                            <li><span class="backward-2"></span></li>
+                        </ul>
+                    </li>
+                    #}
+                </ul>
+            </div>
+        </div>
+        <div class="infos">
+            <span class="close" title="Fermer">Fermer</span>
+            <div>
+                <h2>Infos zone</h2>
+                <div class="input-group">
+                    <label for="name">Nom</label>
+                    <input type="text" name="name" id="name">
+                </div>
+                <div class="container-input">
+                    <div class="input-group">
+                        <label for="x">Position en X</label>
+                        <input type="text" name="x" id="x">
+                    </div>
+                    <div class="input-group">
+                        <label for="y">Position en Y</label>
+                        <input type="text" name="y" id="y">
+                    </div>
+                </div>
+                <div class="container-input">
+                    <div class="input-group">
+                        <label for="width">Largeur</label>
+                        <input type="text" name="width" id="width">
+                    </div>
+                    <div class="input-group">
+                        <label for="height">Hauteur</label>
+                        <input type="text" name="height" id="height">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal none" id="new">
+            <span class="close" title="Fermer">Fermer</span>
+            <div class="popup">
+                <div>
+                    <h2>Nouveau</h2>
+                    <form action="" method="">
+                        <div class="radios-group">
+                            <span>Orientation du template</span>
+                            <div class="radio">
+                                <input type="radio" name="orientation" id="horizontal" checked>
+                                <label for="horizontal">Horizontal</label>
+                            </div>
+                            <div class="radio">
+                                <input type="radio" name="orientation" id="vertical">
+                                <label for="vertical">Vertical</label>
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <label for="name">Nom du template</label>
+                            <input type="text" name="name" id="name">
+                        </div>
+                        <div>
+                            <button class="btn">valider</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="modal none" id="open">
+            <span class="close" title="Fermer">Fermer</span>
+            <div class="popup">
+                <div>
+                    <h2>Ouvrir</h2>
+                    <form action="" method="">
+                        <div class="radios-group">
+                            <span>Filtrer par orientation</span>
+                            <div class="radio">
+                                <input type="radio" name="orientation" id="horizontal" checked>
+                                <label for="horizontal">Horizontal</label>
+                            </div>
+                            <div class="radio">
+                                <input type="radio" name="orientation" id="vertical">
+                                <label for="vertical">Vertical</label>
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <label for="templates">Liste des templates</label>
+                            <select name="templates" id="templates">
+                                <option value="">Nom du template</option>
+                            </select>
+                        </div>
+                        <div>
+                            <button class="btn">valider</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <script src="{{ asset('assets/js/jquery-3.4.1.min.js') }}"></script>
+        {#<script src="js/utilities.js"></script>#}
+        <script>
+            $(_ => {
+                // Sélectionne une zone
+               /* $(document).on('click', '.zone', e => {
+                    let current = e.target
+                    // Supprime la classe 'opacity' sur l'ensemble des zones
+                    $('.zone').removeClass('opacity')
+                    // Ajoute la classe 'opacity' à la zone active
+                    $(current).addClass('opacity')
+                    // Affiche le container contenant les informations de la zone
+                    $('.infos').fadeIn('slow')
+                    // On rend disponible l'option 'Transformation manuelle'
+                    $('#toolbar span.disabled, nav ul li.disabled').removeClass('disabled')
+                })*/
+                // Gestion du menu
+                $('nav ul li:first-child p').on('click', e => {
+                    let current = e.target
+                    // Type du menu sélectionné
+                    let type = $(current).prev().attr('class')
+                    // Affiche l'élément correspondant au menu
+                    $('#' + type).removeClass('none')
+                })
+            })
+        </script>
+{%  endblock %}
