@@ -1,0 +1,27 @@
+.list-medias .incrust-model img{
+    max-width : 100%;
+    object-fit: contain;
+    outline : 1px solid #385b72;
+    height: 130px;
+}
+.list-medias .incrustList li{
+    margin : 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+
+
+.list-medias .incrustList li img{
+    width : 130px;
+    height : 130px;
+}
+
+.list-medias .incrustList {
+    display:flex;
+    flex-wrap:wrap;
+    align-items : center;
+    cursor:pointer;
+}

@@ -1,0 +1,56 @@
+<!-----------------------ZONE INFOS MODAL-------------------->
+<div class="infos none template-toolsmenu">
+    <span class="close" title="Fermer"><i class="fal fa-times"></i></span>
+    <div class="tools">
+        <h2>Infos zone</h2>
+        <ul class="links">
+            <li class="tool ZoneAssociationTool" data-tool="ZoneAssociationTool" data-type="associate" title="Associer des zones" ><span>Associer des Zones</span></li>
+        </ul>
+        <div class="infos__container__zoneInfosGestioner">
+            <div class="input-group">
+                <label for="name">Nom</label>
+                <input type="text" name="name" id="name">
+            </div>
+            <div class="input-group">
+                <label for="type">Type</label>
+                <select name="type" id="type">
+                    <option value="zone">Zone</option>
+                    <option value="media">Média</option>
+                    <option value="price">Prix</option>
+                    <option value="text">Texte</option>
+                </select>
+            </div>
+            <div class="input-group">
+                <label for="referent">Positionné par rapport à</label>
+                <div id="wrapping-div">
+                    <div id="wrapper-div">&nbsp;</div>
+                    <select name="referent" id="referent" disabled>
+                        <option value="selectedReferent">Template</option>
+                    </select></div>
+            </div>
+            <div class="container-input">
+                <div class="input-group">
+                    <label for="posX">Position en X</label>
+                    <input type="text" name="posX" id="posX">
+                </div>
+                <div class="input-group">
+                    <label for="posY">Position en Y</label>
+                    <input type="text" name="posY" id="posY">
+                </div>
+            </div>
+            <div class="container-input">
+                <div class="input-group">
+                    <label for="width">Largeur</label>
+                    <input type="text" name="width" id="width">
+                </div>
+                <div class="input-group">
+                    <label for="height">Hauteur</label>
+                    <input type="text" name="height" id="height">
+                </div>
+            </div>
+        </div>
+        <div class="infos__container__zoneContentGestionner">
+            <button><h3>Gestion du contenu de zone</h3></button>
+        </div>
+    </div>
+</div>

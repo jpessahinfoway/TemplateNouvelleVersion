@@ -1,0 +1,13 @@
+.modal--comfirm .modal__content{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding: 1rem 0;
+}
+.modal--comfirm .modal__content div{
+    margin-bottom : 1rem;
+}
+
+.modal--comfirm{
+    display: none;
+}

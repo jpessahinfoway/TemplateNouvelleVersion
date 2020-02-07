@@ -1,0 +1,139 @@
+.associate .zones-associate{
+    display: flex;
+    flex-direction: column;
+    margin-top:30px;
+}
+
+.associate .zones-associate div.area{
+    width : 95%;
+}
+
+.associate .popup div:nth-of-type(2) form h3 {
+    font-style: italic;
+    font-weight: bold;
+    font-size: 0.8rem;
+    margin-bottom: 4px;
+    color: #385b72;
+}
+.associate .zones-associate div.area {
+    width: 100%;
+    height: 200px;
+    padding: 5px;
+    border: 1px solid #385b72;
+}
+.associate .categories-associate div{
+    margin-top:5px;
+    display:flex;
+    flex-direction: column;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    max-height: 350px;
+    box-shadow: 0 0 black;
+}
+.associate .popup div:nth-of-type(2) form div:not(.controls):not(:last-child) span{
+    padding: 3px;
+    margin-right: 5px;
+    cursor: pointer;
+    display: inline-block;
+    color: #385b72;
+}
+.associate .popup div:nth-of-type(2) form div.controls {
+    display: flex;
+    justify-content: center;
+}
+.associate .popup form div.controls span {
+    background:  #385b72;
+    font-size:15px;
+    border: 1px solid #385b72;
+    margin-top: 10px;
+    padding: 10px;
+}
+
+.display_back button{
+    padding: 10px;
+    background: #cc4444;
+    color: white;
+    text-transform: uppercase;
+}
+.display_back button:hover{
+    background:#a72a0a!important;
+}
+.display_back{
+    height:40px;
+}
+.associate .popup div:nth-of-type(2) form div.controls i{
+    color:white;
+}
+
+.associate .popup div:nth-of-type(3) > span {
+    font-weight: bold;
+    font-size: 0.7rem;
+    color: #385b72;
+    font-style: italic;
+    cursor: pointer;
+}
+.associate .popup div:nth-of-type(3) form {
+    margin-top: 5px;
+}
+.associate .popup div:nth-of-type(3) form > div {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    flex-wrap: wrap;
+    max-height: 150px;
+}
+
+.association-zones--buttons{
+    display:none;
+    text-align: center;
+    background: #385b72;
+    text-transform: uppercase;
+    color: white;
+    padding-top: 26px;
+}
+.association-zones--buttons button{
+    padding: 10px;
+    color: #ffffff;
+    margin : 8px 1px;
+    border-radius : 3px;
+    font-size : 15px;
+}
+
+.association-zones--buttons button.comfirm{
+    background : #28a745
+}
+.association-zones--buttons button.comfirm:hover:enabled{
+    background : #218838 !important;
+}
+
+
+
+.association-zones--buttons button.comfirm:disabled{
+    background:#39924d;
+    border-color:#28a745;
+}
+.association-zones--buttons button:disabled{
+    opacity: .65;
+    cursor: default;
+}
+
+.association-zones--buttons button.cancel{
+    background : #dc3545
+}
+.association-zones--buttons button.cancel:hover{
+    background: #c82333!important;
+}
+
+.zone.associated{
+    opacity : 0.5;
+    border: 1px solid rgba(0,0,0,0.3);
+}
+
+
+.associated.zone span{
+    color: black;
+    font-weight: bold;
+    text-transform: uppercase;
+    padding: 10px;
+    background: rgba(0,0,0,0.3);
+}

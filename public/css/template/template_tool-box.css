@@ -1,0 +1,15 @@
+#template__workzone__toolBox{
+    display:none;
+    position:absolute;
+    top:0;
+    right:0;
+}
+.toolBoxCase{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#template__workzone__toolBox .active{
+    background:#e06e6e !important;
+}

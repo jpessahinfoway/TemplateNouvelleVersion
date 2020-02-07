@@ -1,0 +1,10 @@
+ul.panels{
+    display: flex;
+    justify-content: center;
+}
+
+li.panel{
+    display: flex;
+    flex-direction: column;
+    padding: 2%;
+}

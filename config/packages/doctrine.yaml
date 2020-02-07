@@ -1,0 +1,613 @@
+doctrine:
+    dbal:
+        default_connection: default
+        connections:
+            default:
+                url: '%env(resolve:ADMIN_DATABASE_URL)%'
+                driver: pdo_mysql
+                server_version: '5.7'
+                charset: utf8mb4
+            quicknet:
+                url: '%env(resolve:QUICKNET_DATABASE_URL)%'
+                driver: pdo_mysql
+                server_version: '5.7'
+                charset: utf8mb4
+                mapping_types:
+                    enum: string
+            5asec:
+                url: '%env(resolve:FIVEASEC_DATABASE_URL)%'
+                driver: pdo_mysql
+                server_version: '5.7'
+                charset: utf8mb4
+            arche:
+                url: '%env(resolve:ARCHE_DATABASE_URL)%'
+                driver: pdo_mysql
+                server_version: '5.7'
+                charset: utf8mb4
+            domtom:
+                url: '%env(resolve:DOMTOM_DATABASE_URL)%'
+                driver: pdo_mysql
+                server_version: '5.7'
+                charset: utf8mb4
+            kfc:
+                url: '%env(resolve:KFC_DATABASE_URL)%'
+                driver: pdo_mysql
+                server_version: '5.7'
+                charset: utf8mb4
+            phileas:
+                url: '%env(resolve:PHILEAS_DATABASE_URL)%'
+                driver: pdo_mysql
+                server_version: '5.7'
+                charset: utf8mb4
+            pizzatime:
+                url: '%env(resolve:PIZZATIME_DATABASE_URL)%'
+                driver: pdo_mysql
+                server_version: '5.7'
+                charset: utf8mb4
+            generique:
+                url: '%env(resolve:GENERIQUE_DATABASE_URL)%'
+                driver: pdo_mysql
+                server_version: '5.7'
+                charset: utf8mb4
+            hopital:
+                url: '%env(resolve:HOPITAL_DATABASE_URL)%'
+                driver: pdo_mysql
+                server_version: '5.7'
+                charset: utf8mb4
+            laplace:
+                url: '%env(resolve:LAPLACE_DATABASE_URL)%'
+                driver: pdo_mysql
+                server_version: '5.7'
+                charset: utf8mb4
+            pizzahut:
+                url: '%env(resolve:PIZZAHUT_DATABASE_URL)%'
+                driver: pdo_mysql
+                server_version: '5.7'
+                charset: utf8mb4
+            bk_domtom:
+                url: '%env(resolve:BK_DOMTOM_DATABASE_URL)%'
+                driver: pdo_mysql
+                server_version: '5.7'
+                charset: utf8mb4
+            croque_mie:
+                url: '%env(resolve:CROQUE_MIE_DATABASE_URL)%'
+                driver: pdo_mysql
+                server_version: '5.7'
+                charset: utf8mb4
+            swc:
+                url: '%env(resolve:SWC_DATABASE_URL)%'
+                driver: pdo_mysql
+                server_version: '5.7'
+                charset: utf8mb4
+            gojohnnygo:
+                url: '%env(resolve:GOJOHNNYGO_DATABASE_URL)%'
+                driver: pdo_mysql
+                server_version: '5.7'
+                charset: utf8mb4
+            argan:
+                url: '%env(resolve:ARGAN_DATABASE_URL)%'
+                driver: pdo_mysql
+                server_version: '5.7'
+                charset: utf8mb4
+            cafeteria:
+                url: '%env(resolve:CAFETERIA_DATABASE_URL)%'
+                driver: pdo_mysql
+                server_version: '5.7'
+                charset: utf8mb4
+            atable:
+                url: '%env(resolve:ATABLE_DATABASE_URL)%'
+                driver: pdo_mysql
+                server_version: '5.7'
+                charset: utf8mb4
+            bara:
+                url: '%env(resolve:BARA_DATABASE_URL)%'
+                driver: pdo_mysql
+                server_version: '5.7'
+                charset: utf8mb4
+            centerparc:
+                url: '%env(resolve:CENTERPARC_DATABASE_URL)%'
+                driver: pdo_mysql
+                server_version: '5.7'
+                charset: utf8mb4
+            confluence:
+                url: '%env(resolve:CONFLUENCE_DATABASE_URL)%'
+                driver: pdo_mysql
+                server_version: '5.7'
+                charset: utf8mb4
+            courtepaille:
+                url: '%env(resolve:COURTEPAILLE_DATABASE_URL)%'
+                driver: pdo_mysql
+                server_version: '5.7'
+                charset: utf8mb4
+            delicia:
+                url: '%env(resolve:DELICIA_DATABASE_URL)%'
+                driver: pdo_mysql
+                server_version: '5.7'
+                charset: utf8mb4
+            factory:
+                url: '%env(resolve:FACTORY_DATABASE_URL)%'
+                driver: pdo_mysql
+                server_version: '5.7'
+                charset: utf8mb4
+            fauchon:
+                url: '%env(resolve:FAUCHON_DATABASE_URL)%'
+                driver: pdo_mysql
+                server_version: '5.7'
+                charset: utf8mb4
+            masquemenos:
+                url: '%env(resolve:MASQUEMENOS_DATABASE_URL)%'
+                driver: pdo_mysql
+                server_version: '5.7'
+                charset: utf8mb4
+            redhippo:
+                url: '%env(resolve:REDHIPPO_DATABASE_URL)%'
+                driver: pdo_mysql
+                server_version: '5.7'
+                charset: utf8mb4
+            boiteapizza:
+                url: '%env(resolve:BOITEAPIZZA_DATABASE_URL)%'
+                driver: pdo_mysql
+                server_version: '5.7'
+                charset: utf8mb4
+            victor:
+                url: '%env(resolve:VICTOR_DATABASE_URL)%'
+                driver: pdo_mysql
+                server_version: '5.7'
+                charset: utf8mb4
+            panorama:
+                url: '%env(resolve:PANORAMA_DATABASE_URL)%'
+                driver: pdo_mysql
+                server_version: '5.7'
+                charset: utf8mb4
+            areaspizzahut:
+                url: '%env(resolve:AREASPIZZAHUT_DATABASE_URL)%'
+                driver: pdo_mysql
+                server_version: '5.7'
+                charset: utf8mb4
+            belharra:
+                url: '%env(resolve:BELHARRA_DATABASE_URL)%'
+                driver: pdo_mysql
+                server_version: '5.7'
+                charset: utf8mb4
+            cotesushi:
+                url: '%env(resolve:COTESUSHI_DATABASE_URL)%'
+                driver: pdo_mysql
+                server_version: '5.7'
+                charset: utf8mb4
+            leclerc:
+                url: '%env(resolve:LECLERC_DATABASE_URL)%'
+                driver: pdo_mysql
+                server_version: '5.7'
+                charset: utf8mb4
+            pepperico:
+                url: '%env(resolve:PEPPERICO_DATABASE_URL)%'
+                driver: pdo_mysql
+                server_version: '5.7'
+                charset: utf8mb4
+            panasia:
+                url: '%env(resolve:PANASIA_DATABASE_URL)%'
+                driver: pdo_mysql
+                server_version: '5.7'
+                charset: utf8mb4
+            colombus:
+                url: '%env(resolve:COLOMBUS_DATABASE_URL)%'
+                driver: pdo_mysql
+                server_version: '5.7'
+                charset: utf8mb4
+            jab_baker:
+                url: '%env(resolve:JAB_BAKER_DATABASE_URL)%'
+                driver: pdo_mysql
+                server_version: '5.7'
+                charset: utf8mb4
+            los_pollos:
+                url: '%env(resolve:LOS_POLLOS_DATABASE_URL)%'
+                driver: pdo_mysql
+                server_version: '5.7'
+                charset: utf8mb4
+            6treize:
+                url: '%env(resolve:SIXTREIZE_DATABASE_URL)%'
+                driver: pdo_mysql
+                server_version: '5.7'
+                charset: utf8mb4
+            debug:
+                url: '%env(resolve:DEBUG_DATABASE_URL)%'
+                driver: pdo_mysql
+                server_version: '5.7'
+                charset: utf8mb4
+                mapping_types:
+                    enum: string
+            rice_trotters:
+                url: '%env(resolve:RICE_TROTTERS_DATABASE_URL)%'
+                driver: pdo_mysql
+                server_version: '5.7'
+                charset: utf8mb4
+    orm:
+        default_entity_manager: default
+        entity_managers:
+            default:
+                connection: default
+                mappings:
+                    Main:
+                        is_bundle: false
+                        type: annotation
+                        dir: '%kernel.project_dir%/src/Entity/Main'
+                        prefix: App\Entity\Main
+                        alias: Main
+            quicknet:
+                connection: quicknet
+                mappings:
+                    quick:
+                        is_bundle: false
+                        type: annotation
+                        dir: '%kernel.project_dir%/src/Entity/OldApp'
+                        prefix: App\Entity\OldApp
+                        alias: Quicknet
+            5asec:
+                connection: 5asec
+                mappings:
+                    5asec:
+                        is_bundle: false
+                        type: annotation
+                        dir: '%kernel.project_dir%/src/Entity/OldApp'
+                        prefix: App\Entity\OldApp
+                        alias: 5asec
+            arche:
+                connection: arche
+                mappings:
+                    arche:
+                        is_bundle: false
+                        type: annotation
+                        dir: '%kernel.project_dir%/src/Entity/OldApp'
+                        prefix: App\Entity\OldApp
+                        alias: Arche
+            domtom:
+                connection: domtom
+                mappings:
+                    domtom:
+                        is_bundle: false
+                        type: annotation
+                        dir: '%kernel.project_dir%/src/Entity/OldApp'
+                        prefix: App\Entity\OldApp
+                        alias: Domtom
+            kfc:
+                connection: kfc
+                mappings:
+                    kfc:
+                        is_bundle: false
+                        type: annotation
+                        dir: '%kernel.project_dir%/src/Entity/OldApp'
+                        prefix: App\Entity\OldApp
+                        alias: Kfc
+            phileas:
+                connection: phileas
+                mappings:
+                    phileas:
+                        is_bundle: false
+                        type: annotation
+                        dir: '%kernel.project_dir%/src/Entity/OldApp'
+                        prefix: App\Entity\OldApp
+                        alias: Phileas
+            pizzatime:
+                connection: pizzatime
+                mappings:
+                    pizzatime:
+                        is_bundle: false
+                        type: annotation
+                        dir: '%kernel.project_dir%/src/Entity/OldApp'
+                        prefix: App\Entity\OldApp
+                        alias: Pizzatime
+            generique:
+                connection: generique
+                mappings:
+                    generique:
+                        is_bundle: false
+                        type: annotation
+                        dir: '%kernel.project_dir%/src/Entity/OldApp'
+                        prefix: App\Entity\OldApp
+                        alias: Generique
+            hopital:
+                connection: hopital
+                mappings:
+                    hopital:
+                        is_bundle: false
+                        type: annotation
+                        dir: '%kernel.project_dir%/src/Entity/OldApp'
+                        prefix: App\Entity\OldApp
+                        alias: Hopital
+            laplace:
+                connection: laplace
+                mappings:
+                    laplace:
+                        is_bundle: false
+                        type: annotation
+                        dir: '%kernel.project_dir%/src/Entity/OldApp'
+                        prefix: App\Entity\OldApp
+                        alias: Laplace
+            pizzahut:
+                connection: pizzahut
+                mappings:
+                    pizzahut:
+                        is_bundle: false
+                        type: annotation
+                        dir: '%kernel.project_dir%/src/Entity/OldApp'
+                        prefix: App\Entity\OldApp
+                        alias: Pizzahut
+            bk_domtom:
+                connection: bk_domtom
+                mappings:
+                    bk_domtom:
+                        is_bundle: false
+                        type: annotation
+                        dir: '%kernel.project_dir%/src/Entity/OldApp'
+                        prefix: App\Entity\OldApp
+                        alias: Bk_domtom
+            croque_mie:
+                connection: croque_mie
+                mappings:
+                    croque_mie:
+                        is_bundle: false
+                        type: annotation
+                        dir: '%kernel.project_dir%/src/Entity/OldApp'
+                        prefix: App\Entity\OldApp
+                        alias: Croque_mie
+            swc:
+                connection: swc
+                mappings:
+                    swc:
+                        is_bundle: false
+                        type: annotation
+                        dir: '%kernel.project_dir%/src/Entity/OldApp'
+                        prefix: App\Entity\OldApp
+                        alias: Swc
+            gojohnnygo:
+                connection: gojohnnygo
+                mappings:
+                    gojohnnygo:
+                        is_bundle: false
+                        type: annotation
+                        dir: '%kernel.project_dir%/src/Entity/OldApp'
+                        prefix: App\Entity\OldApp
+                        alias: Gojohnnygo
+            argan:
+                connection: argan
+                mappings:
+                    argan:
+                        is_bundle: false
+                        type: annotation
+                        dir: '%kernel.project_dir%/src/Entity/OldApp'
+                        prefix: App\Entity\OldApp
+                        alias: Argan
+            cafeteria:
+                connection: cafeteria
+                mappings:
+                    cafeteria:
+                        is_bundle: false
+                        type: annotation
+                        dir: '%kernel.project_dir%/src/Entity/OldApp'
+                        prefix: App\Entity\OldApp
+                        alias: Cafeteria
+            atable:
+                connection: atable
+                mappings:
+                    atable:
+                        is_bundle: false
+                        type: annotation
+                        dir: '%kernel.project_dir%/src/Entity/OldApp'
+                        prefix: App\Entity\OldApp
+                        alias: Atable
+            bara:
+                connection: bara
+                mappings:
+                    bara:
+                        is_bundle: false
+                        type: annotation
+                        dir: '%kernel.project_dir%/src/Entity/OldApp'
+                        prefix: App\Entity\OldApp
+                        alias: Bara
+            centerparc:
+                connection: centerparc
+                mappings:
+                    centerparc:
+                        is_bundle: false
+                        type: annotation
+                        dir: '%kernel.project_dir%/src/Entity/OldApp'
+                        prefix: App\Entity\OldApp
+                        alias: Centerparc
+            confluence:
+                connection: confluence
+                mappings:
+                    confluence:
+                        is_bundle: false
+                        type: annotation
+                        dir: '%kernel.project_dir%/src/Entity/OldApp'
+                        prefix: App\Entity\OldApp
+                        alias: Confluence
+            courtepaille:
+                connection: courtepaille
+                mappings:
+                    courtepaille:
+                        is_bundle: false
+                        type: annotation
+                        dir: '%kernel.project_dir%/src/Entity/OldApp'
+                        prefix: App\Entity\OldApp
+                        alias: Courtepaille
+            delicia:
+                connection: delicia
+                mappings:
+                    delicia:
+                        is_bundle: false
+                        type: annotation
+                        dir: '%kernel.project_dir%/src/Entity/OldApp'
+                        prefix: App\Entity\OldApp
+                        alias: Delicia
+            factory:
+                connection: factory
+                mappings:
+                    factory:
+                        is_bundle: false
+                        type: annotation
+                        dir: '%kernel.project_dir%/src/Entity/OldApp'
+                        prefix: App\Entity\OldApp
+                        alias: Factory
+            fauchon:
+                connection: fauchon
+                mappings:
+                    fauchon:
+                        is_bundle: false
+                        type: annotation
+                        dir: '%kernel.project_dir%/src/Entity/OldApp'
+                        prefix: App\Entity\OldApp
+                        alias: Fauchon
+            masquemenos:
+                connection: masquemenos
+                mappings:
+                    masquemenos:
+                        is_bundle: false
+                        type: annotation
+                        dir: '%kernel.project_dir%/src/Entity/OldApp'
+                        prefix: App\Entity\OldApp
+                        alias: Masquemenos
+            redhippo:
+                connection: redhippo
+                mappings:
+                    redhippo:
+                        is_bundle: false
+                        type: annotation
+                        dir: '%kernel.project_dir%/src/Entity/OldApp'
+                        prefix: App\Entity\OldApp
+                        alias: Redhippo
+            boiteapizza:
+                connection: boiteapizza
+                mappings:
+                    boiteapizza:
+                        is_bundle: false
+                        type: annotation
+                        dir: '%kernel.project_dir%/src/Entity/OldApp'
+                        prefix: App\Entity\OldApp
+                        alias: Boiteapizza
+            victor:
+                connection: victor
+                mappings:
+                    victor:
+                        is_bundle: false
+                        type: annotation
+                        dir: '%kernel.project_dir%/src/Entity/OldApp'
+                        prefix: App\Entity\OldApp
+                        alias: Victor
+            panorama:
+                connection: panorama
+                mappings:
+                    panorama:
+                        is_bundle: false
+                        type: annotation
+                        dir: '%kernel.project_dir%/src/Entity/OldApp'
+                        prefix: App\Entity\OldApp
+                        alias: Panorama
+            areaspizzahut:
+                connection: areaspizzahut
+                mappings:
+                    areaspizzahut:
+                        is_bundle: false
+                        type: annotation
+                        dir: '%kernel.project_dir%/src/Entity/OldApp'
+                        prefix: App\Entity\OldApp
+                        alias: Areaspizzahut
+            belharra:
+                connection: belharra
+                mappings:
+                    belharra:
+                        is_bundle: false
+                        type: annotation
+                        dir: '%kernel.project_dir%/src/Entity/OldApp'
+                        prefix: App\Entity\OldApp
+                        alias: Belharra
+            cotesushi:
+                connection: cotesushi
+                mappings:
+                    cotesushi:
+                        is_bundle: false
+                        type: annotation
+                        dir: '%kernel.project_dir%/src/Entity/OldApp'
+                        prefix: App\Entity\OldApp
+                        alias: Cotesushi
+            leclerc:
+                connection: leclerc
+                mappings:
+                    leclerc:
+                        is_bundle: false
+                        type: annotation
+                        dir: '%kernel.project_dir%/src/Entity/OldApp'
+                        prefix: App\Entity\OldApp
+                        alias: Leclerc
+            pepperico:
+                connection: pepperico
+                mappings:
+                    pepperico:
+                        is_bundle: false
+                        type: annotation
+                        dir: '%kernel.project_dir%/src/Entity/OldApp'
+                        prefix: App\Entity\OldApp
+                        alias: Pepperico
+            panasia:
+                connection: panasia
+                mappings:
+                    panasia:
+                        is_bundle: false
+                        type: annotation
+                        dir: '%kernel.project_dir%/src/Entity/OldApp'
+                        prefix: App\Entity\OldApp
+                        alias: Panasia
+            colombus:
+                connection: colombus
+                mappings:
+                    colombus:
+                        is_bundle: false
+                        type: annotation
+                        dir: '%kernel.project_dir%/src/Entity/OldApp'
+                        prefix: App\Entity\OldApp
+                        alias: Colombus
+            jab_baker:
+                connection: jab_baker
+                mappings:
+                    jab_baker:
+                        is_bundle: false
+                        type: annotation
+                        dir: '%kernel.project_dir%/src/Entity/OldApp'
+                        prefix: App\Entity\OldApp
+                        alias: Jab_baker
+            los_pollos:
+                connection: los_pollos
+                mappings:
+                    los_pollos:
+                        is_bundle: false
+                        type: annotation
+                        dir: '%kernel.project_dir%/src/Entity/OldApp'
+                        prefix: App\Entity\OldApp
+                        alias: Los_pollos
+            6treize:
+                connection: 6treize
+                mappings:
+                    6treize:
+                        is_bundle: false
+                        type: annotation
+                        dir: '%kernel.project_dir%/src/Entity/OldApp'
+                        prefix: App\Entity\OldApp
+                        alias: 6treize
+            debug:
+                connection: debug
+                mappings:
+                    debug:
+                        is_bundle: false
+                        type: annotation
+                        dir: '%kernel.project_dir%/src/Entity/OldApp'
+                        prefix: App\Entity\OldApp
+                        alias: Debug
+            rice_trotters:
+                connection: rice_trotters
+                mappings:
+                    rice_trotters:
+                        is_bundle: false
+                        type: annotation
+                        dir: '%kernel.project_dir%/src/Entity/OldApp'
+                        prefix: App\Entity\OldApp
+                        alias: Rice_trotters

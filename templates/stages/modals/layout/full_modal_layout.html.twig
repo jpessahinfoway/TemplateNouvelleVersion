@@ -1,0 +1,5 @@
+{% extends 'stages/modals/layout/modal_layout.html.twig' %}
+
+    {% block modal %}
+        <div class="modal__background {% block modal_background_classes %}{% endblock %}">{{ parent() }}</div>
+    {% endblock %}

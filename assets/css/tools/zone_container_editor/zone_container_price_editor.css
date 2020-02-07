@@ -1,0 +1,221 @@
+.price-editor .list-incrust form .radios-group {
+    flex-direction: row;
+    justify-content: center;
+    margin: 20px 0;
+}
+.price-editor .list-incrust form .radios-group > span {
+    margin-bottom: 0;
+}
+.price-editor .list-incrust {
+    margin-top: 20px;
+}
+.price-editor .list-prices {
+    display: flex;
+    flex-direction: column;
+    min-height: 360px;
+    max-height: 360px;
+    overflow-y: auto;
+    align-content: flex-start;
+    scrollbar-color: #385b72 #9b9494;
+    scrollbar-width: thin;
+}
+.price-editor .list-prices > div {
+    margin: 0 10px 10px 0;
+}
+.price-editor .list-prices > div > div:first-child {
+    display: flex;
+    justify-content: space-between;
+}
+.price-editor .list-prices > div > div:first-child span:first-child {
+    width: 80%;
+}
+.price-editor .list-prices > div > div:first-child span:last-child {
+    cursor: pointer;
+}
+.price-editor .list-prices > div > div:last-child {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 130px;
+    width: 100%;
+    border: 1px solid #385b72;
+    background-color: #f0f0f0;
+    cursor: pointer;
+    overflow: hidden;
+}
+.price-editor .list-prices > div > div > div {
+    margin: 0 auto;
+}
+.price-editor.create-incrust .preview {
+    max-height: 300px;
+    min-height: 300px;
+    overflow-y: auto;
+    width: 100%;
+    background-color: #f0f0f0;
+    border: 1px solid #d6d6d6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative
+}
+
+#form-create-rupture-incrust{
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.style-creator__subtool-container__form__choices{
+    overflow-y: scroll;
+    padding-right:10px;
+}
+
+.create-rupture-incrust{
+    display: flex;
+    flex-direction: column;
+    overflow:hidden;
+}
+#price-style-creator{
+    max-height: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow:hidden;
+}
+.style-creator__subtool-container, .style-creator__subtool-container__form{
+    display: flex;
+    flex-direction: column;
+    overflow:hidden;
+}
+
+.style-creator{
+    display: flex;
+    flex-direction: column;
+    overflow:hidden;
+}
+.price-editor .create-incrust .preview form {
+    position: absolute;
+    right: 5px;
+    top: 0;
+}
+.price-editor .create-incrust .create-price-incrust > p,
+.price-editor .create-incrust .create-rupture-incrust > p {
+    margin: 4px 0;
+    color: #385b72;
+    text-align: center;
+    font-size: 0.6rem;
+}
+.price-editor .create-incrust .create-rupture-incrust > .delete-background {
+    cursor: pointer;
+    display: block;
+    text-align: center;
+    width: 100%;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+.price-editor .create-incrust .create-rupture-incrust .delete-background i {
+    margin-right: 3px;
+}
+.price-editor .create-incrust .create-price-incrust .preview div {
+    position: relative;
+}
+.price-editor .create-incrust .create-price-incrust .preview span {
+    top: 0;
+    left: 0;
+    position: relative;
+    cursor: pointer;
+}
+.price-editor .create-incrust > form:first-of-type {
+    display: flex;
+    justify-content: center;
+}
+.price-editor .create-incrust .select-element-price,
+.price-editor .create-incrust .select-element-rupture {
+    display: flex;
+    justify-content: center;
+}
+.price-editor .slider-ruptures {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    min-height: 200px;
+    margin: 10px 0;
+    overflow: hidden;
+}
+
+.price-editor .slider-ruptures > span:first-child {
+    visibility: hidden;
+}
+.price-editor .slider-ruptures > span > i {
+    font-size: 1.5rem;
+}
+.price-editor .container-ruptures {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+.price-editor .container-ruptures li {
+    width: 100%;
+    text-align: center;
+    transition: all 2s;
+    background-color: #fefee2;
+    border: 1px solid #385b72;
+    min-height: 150px;
+    max-height: 150px;
+    overflow-y: auto;
+}
+.price-editor .container-ruptures li img {
+    transform-origin: center;
+    transform: scale(0.7);
+    cursor: pointer;
+}
+.price-editor .slider-ruptures > p {
+    width: 80%;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 0.6rem;
+    color: #385b72;
+    font-style: italic;
+}
+.price-editor .slider-ruptures > ul:last-of-type {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.price-editor .slider-ruptures > ul:last-of-type > li:first-child {
+    visibility: hidden;
+}
+.price-editor .slider-ruptures > ul:last-of-type > li:nth-child(2) {
+    margin: 0 10px;
+    font-size: 0.7rem;
+}
+.price-editor .slider-ruptures > ul:last-of-type > li > span {
+    cursor: pointer;
+}
+.price-editor .slider-ruptures > ul:last-of-type > li > span > i {
+    font-size: 1.2rem;
+}
+
+
+#choose-price-style{
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+#choose-price-style .list-prices{
+    display: flex;
+    overflow-y: auto;
+    padding-right:10px;
+    margin: 10px 0;
+}
+
+
+
+
+#choose-price-style form .radios-group, #choose-price-style form span{
+padding : 5px;
+}
+

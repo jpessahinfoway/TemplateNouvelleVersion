@@ -1,0 +1,25 @@
+{% extends 'template/layout/layout.html.twig' %}
+
+{% block title %}Template Accueil{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="/css/template/template_accueil.css">
+    <link rel="stylesheet" href="/css/template/template_zone.css">
+    <link rel="stylesheet" href="/css/template/template_tool-box.css">
+    <link rel="stylesheet" href="/css/template/tools/resizer.css">
+    <link rel="stylesheet" href="/css/template/tools/dragger.css">
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script src="/js/template/create/index.js" type="module" defer></script>
+{% endblock %}
+{% block body %}
+    <div class="container">
+        <div id="template">
+            <div class="workzone">
+                <div id="template__workzone__templateZone" data-n={{templateName}} data-f={{templateFormat}}></div>
+                <div id="template__workzone__toolBox"><ul></ul></div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

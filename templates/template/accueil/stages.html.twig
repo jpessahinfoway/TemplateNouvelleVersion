@@ -1,0 +1,19 @@
+{% block stages %}
+    <nav id="stages-nav">
+        <ul id="stages-nav__choices">
+
+            {% if 1 in user.permissions.access %}
+                <li class="{% if stage is same as(1) %} active {% endif %} stages-nav__choice" data-stage="1"><p><a href="{{ path('template::home',{ stage: 1 }) }}">Etape n°1</a></p></li>
+            {% endif %}
+
+            {% if 2 in user.permissions.access %}
+                <li class="{% if stage is same as(2) %} active {% endif %} stages-nav__choice" data-stage="2"><p><a href="{{ path('template::home',{ stage: 2 }) }}">Etape n°2</a></p></li>
+            {% endif %}
+
+            {% if 3 in user.permissions.access %}
+                <li class="{% if stage is same as(3) %} active {% endif %} stages-nav__choice" data-stage="3"><p><a href="{{ path('template::home',{ stage: 3 }) }}">Etape n°3</a></p></li>
+            {% endif %}
+
+        </ul>
+    </nav>
+{%  endblock %}

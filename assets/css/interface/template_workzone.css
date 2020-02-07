@@ -1,0 +1,17 @@
+.container-zone{
+    display:none;
+}
+
+.blindmode{
+    background: transparent !important;
+}
+section {
+    overflow: hidden;
+    position: absolute;
+    top: 100px;
+    left: 200px;
+    background-color: #ffffff;
+    width: 1280px;
+    height: 720px;
+    display: block;
+}

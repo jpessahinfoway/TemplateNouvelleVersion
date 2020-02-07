@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+    {% block stylesheets %}
+        {{ parent() }}
+        {{ encore_entry_link_tags('stages') }}
+    {% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('stage' ~ stage )}}
+{% endblock %}
+{% block header %}
+    {% include 'stages/menus/template_navmenu_top.html.twig' %}
+{%  endblock  %}
+  {% block body %}
+
+        
+          {% block modals %}
+              {{ parent() }}
+              {% block zone_infos_modal %}{% endblock %}
+              {% block zone_content_assigner_modal %}
+                  {% include 'stages/modals/zone_content_assigners/zone_background_assigner/zone_background_assigner.html.twig' %}
+
+              {% endblock %}
+          {% endblock %}
+          {% block stagesmenus %}
+              <div class="toolbar template-toolsmenu">
+                  {%  block zone_content_assigner_tools_menu %}
+                      {% include 'stages/menus/zone_content_assigner_tools_menu.html.twig' %}
+                  {% endblock %}
+                  {% block main_tools_menu %}
+                      {% include 'stages/menus/main_tools_menu.html.twig' %}
+                  {% endblock %}
+             </div>
+            {% endblock %}
+
+      {% include 'stages/workzone/workzone.html.twig' %}
+  {% endblock %}

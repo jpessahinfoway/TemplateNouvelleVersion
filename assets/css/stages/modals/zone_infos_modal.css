@@ -1,0 +1,72 @@
+.infos i{
+    transform:rotate(180deg);
+    font-size:5px;
+    color:black;
+}
+
+
+.infos span{
+    margin:0 !important;
+    flex-grow: 1;
+}
+
+.infos #referent{
+    color:black;
+}
+.infos {
+    padding: 10px;
+    background-color: #ffffff;
+    border: 1px solid #385b72;
+    position: absolute;
+    width: 17%;
+    right: 5px;
+    top: 60px;
+    z-index:50;
+}
+.infos ul {
+    margin-bottom: 15px;
+}
+.infos ul li {
+    margin-bottom: 5px;
+}
+.infos ul li span {
+    margin-bottom: 4px;
+    color: #385b72;
+    font-weight: bold;
+    font-size: 0.8rem;
+    font-style: italic;
+    cursor: pointer;
+    position: relative;
+}
+.infos ul li span:before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    margin-bottom: -2px;
+    background-color: #385b72;
+    transform: scaleX(0);
+    transition: .5s;
+}
+.infos ul li span:hover:before {
+    transform: scaleX(1);
+}
+.infos div.container-input {
+    display: flex;
+    justify-content: space-between;
+}
+.infos .input-group {
+    width: 45%;
+}
+.infos > div > div.input-group:nth-of-type(1) {
+    width: 100%;
+}
+.infos > .close {
+    color: #385b72;
+}
+.infos > div > div.input-group:nth-of-type(2),.infos > div > div.input-group:nth-of-type(3), #referent{
+    width: 100%;
+}
+

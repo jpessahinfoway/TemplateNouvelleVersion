@@ -1,0 +1,84 @@
+/*******************************************************/
+/**************************MODAL************************/
+/*******************************************************/
+.popup {
+    width: 50%;
+}
+
+.modal .popup{
+    padding: 15px;
+    position: relative;
+    width: 60%;
+    background-color: #ffffff;
+    border: 1px solid #385b72;
+}
+
+
+.modal .popup{
+    display:flex;
+    justify-content: space-between;
+}
+
+form.choose-type-incrust{
+    display:flex;
+    flex-direction:column;
+    border: 1px solid #f0f0f0;
+    margin : 10px 0;
+}
+
+form.choose-type-incrust .radios-group{
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    margin : 5px 0;
+}
+form.choose-type-incrust span{
+    text-align: center;
+    padding:5px;
+    background: #f0f0f0;
+    color : #bdbdbd;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+
+.modal .popup > div{
+    width:49%;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+.modal {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 5000;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+.popup {
+    max-height:90%;
+    overflow-y: auto;
+
+}
+.icon-action-div i{
+    opacity :0.3;
+    color:white;
+}
+.icon-action-div i.active-icon{
+    opacity :0.6;
+    position: relative;
+}
+
+.icon-action-div{
+    width:100%;
+    height:100%;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
