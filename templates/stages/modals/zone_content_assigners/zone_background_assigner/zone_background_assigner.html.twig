@@ -1,0 +1,8 @@
+{% extends 'stages/modals/zone_content_assigners/zone_content_assigner.html.twig' %}
+{% block title %}Attribuer un background aux zones{% endblock %}
+{% block modal_attrs %}id="zone_bg_assigner"{% endblock %}
+{% block modal_background_classes %} none {% endblock %}
+{% block modal_content %}
+    {% include 'stages/modals/zone_content_assigners/template_miniature.html.twig' %}
+    {% include 'stages/modals/zone_content_assigners/zone_background_assigner/zone_background_assigner_choose_background.hmtl.twig' %}
+{% endblock  %}

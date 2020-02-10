@@ -1,0 +1,25 @@
+.modal__template-register-as__form{
+    text-align: center;
+}
+.modal__template-register-as__form__content{
+    margin: 1rem;
+    display: flex;
+    flex-direction: column;
+}
+/*input[name='template-name'].available ::after{*/
+/*    content : "Ce nom est disponible";*/
+/*    color:green;*/
+/*}*/
+
+/*input[name='template-name'].not-available ::after{*/
+/*    content : "Ce nom n'est pas disponible";*/
+/*    color : red;*/
+/*}*/
+/*input[name='template-name']::after{*/
+/*    position: absolute;*/
+/*    right : 0;*/
+/*    top : 0;*/
+/*}*/
+/*input[name='template-name']{*/
+/*    position:relative;*/
+/*}*/

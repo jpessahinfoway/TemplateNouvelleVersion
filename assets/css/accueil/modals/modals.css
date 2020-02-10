@@ -1,0 +1,36 @@
+.modal__background{
+    display:none;
+}
+/*.modal__content{*/
+/*    height : 70vh;*/
+/*}*/
+.modal__template-actions__form--template-lists{
+    height:60vh;
+}
+.modal__template-actions__form--orientation{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.modal__template-actions__form--template-list__item__container{
+    height : 160px;
+    width : 160px;
+    background-color: #f1f1f1;
+
+    display: flex;
+    align-items: center;
+    padding: .2rem;
+}
+.modal__template-actions__form--template-list{
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+.modal__template-actions__form--template-list__item{
+ margin : 1rem;
+}
+
+.modal__template-actions__form--template-list__item__container .template-miniature{
+  position:relative;
+    background-color: white;
+}

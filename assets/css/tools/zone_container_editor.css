@@ -1,0 +1,23 @@
+
+.left-container .containers.bottom-left-container{
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.list-prices ul.classes-text{
+    flex: 1;
+}
+
+.background-editor .class-text{
+    margin: 2px;
+}
+
+.class-text .incrust-style-wrapper {
+    background-color: #f0f0f0;
+    border: 1px solid #d6d6d6;
+    margin-bottom: 10px;
+    cursor: pointer;
+    overflow: hidden;
+    height: 50px;
+}

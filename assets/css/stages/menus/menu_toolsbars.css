@@ -1,0 +1,80 @@
+/*******************************************************/
+/***********************TOOLBAR*************************/
+/*******************************************************/
+.toolbar {
+    position: absolute;
+    top: 20%;
+    width: 170px;
+}
+.toolbar span {
+    position: relative;
+    margin-right: 20px;
+    padding: 10px 0;
+    display: inline-block;
+}
+.toolbar ul li {
+    text-align: right;
+}
+
+.toolbar .modal-toolbar > ul > li > span:after, .toolbar .tools > ul > li > span:after, .toolbar .tools > ul > li > ul > li > span:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    margin-bottom: 7px;
+    background-color: #ffffff;
+    transform: scaleX(0);
+    transition: .5s;
+}
+.toolbar .tools > ul > li > ul > li span:after {
+    background-color: #385b72;
+}
+.toolbar .modal-toolbar > ul > li:hover > span:after, .toolbar .tools > ul > li:hover > span:after, .toolbar .tools > ul > li > ul > li:hover > span:after {
+    transform: scaleX(1);
+}
+.toolbar i {
+    font-size: 1rem;
+    color: #ffffff;
+    text-align: center;
+    width: 20px;
+    margin-right: 3px;
+}
+.modal-toolbar, .toolbar .tools {
+    position: relative;
+    left: -140px;
+    background-color: #385b72;
+    transition: 0.5s all;
+    margin-bottom: 20px;
+    border: 1px solid #385b72;
+}
+.modal-toolbar:hover, .toolbar .tools:hover {
+    left: 0;
+}
+.toolbar ul li {
+    color: #ffffff;
+    font-size: 0.8rem;
+    cursor: pointer;
+}
+.toolbar ul li ul.slider-menu {
+    display: none;
+    background-color: #ffffff;
+}
+.toolbar ul ul li:last-child {
+    border-bottom: none;
+}
+.toolbar ul li ul.slider-menu li, .toolbar ul li ul.slider-menu li i {
+    color: #385b72;
+}
+
+.tools ul li.active-tool{
+    background-color:#369e89
+}
+.tools ul li ul li.active-tool{
+    background-color:#c2ede5 !important
+}
+/*.toolbar .active-tool:not(.hidden-tool),.toolbar li.hidden-tool .active-subTool{
+    background:#369e89
+}*/
+

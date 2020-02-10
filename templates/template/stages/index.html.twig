@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="/lib/fontawesome-pro-5.10.2-web/css/all.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/v2/reset.css">
+    <link rel="stylesheet" href="/css/v2/general.css">
+    <link rel="stylesheet" href="/css/v2/stage2.css">
+    <link rel="stylesheet" href="/css/v2/classes.css">
+
+    <title>Menu du module Template</title>
+    {% block stylesheets %}
+        {# 'app' must match the first argument to addEntry() in webpack.config.js #}
+        {#{{ encore_entry_link_tags('template') }} #}
+{#        <link id="text-style-css" href="{{ path('cssLoader', { 'type': 'text' })}}" rel="stylesheet" type="text/css" media="all" />#}
+{#        <link id="price-style-css" href="{{ path('cssLoader', { 'type': 'price' }) }}" rel="stylesheet" type="text/css" media="all" />#}
+        <!-- Renders a link tag (if your module requires any CSS)
+             <link rel="stylesheet" href="/build/app.css"> -->
+    {% endblock %}
+</head>
+<body {% if stageNumber is defined %}data-stage="{{ stageNumber }}" {% endif %}>
+    <div id="choice-background" class="template-menu">
+        <div id="choice-zone">
+            <div class="choice-window">
+                <div class="choice-window__label"><p>Fenetre de choix</p><span class="choice-window__label__close"><i class="fal fa-times"></i></span></div>
+                <div class="choice-window__content">
+                    <p>Voulez vous confirmer votre choix ?</p>
+                    <div class="choice-window__content__button">
+                        <button id="choice-window__choice--yes">Oui</button>
+                        <button id="choice-window__choice--no">Non</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<main>
+
+    <div class="association-zones--buttons">
+        <p>Cliquez sur les zones a associer et comfirmer ou annuler pour retourner vers le menu</p>
+        <button type="button" class="comfirm" disabled>Confirmer association</button>
+        <button type="button" class="cancel">Annuler</button>
+    </div>
+
+    <nav class="template-toolsmenu">
+        <ul>
+            <li><p>Fichier</p>
+                <ul class="template-menu">
+                    <li title="Nouveau "><i class="fal fa-file"></i><p>Nouveau</p></li>
+                    <li title="Ouvrir"><i class="fal fa-folder-open"></i><p>Ouvrir</p></li>
+                    <li class ="save" title="Enregistrer"><i class="fal fa-save"></i><p>Enregistrer</p></li>
+                    <li title="Quitter"><i class="fal fa-sign-out-alt"></i><p>Quitter</p></li>
+                </ul>
+            </li>
+            <li><p>Edition</p>
+                <ul>
+                    <li data-modal="background"><i class="fal fa-image"></i><p>Arrière plan</p></li>
+                    <li data-modal="text"><i class="fal fa-text"></i><p>Texte</p></li>
+                    <li data-modal="price"><i class="fal fa-euro-sign"></i><p>Prix</p></li>
+                    <li data-modal="medias"><i class="fal fa-photo-video"></i><p>Médias</p></li>
+                </ul>
+            </li>
+            <li><p>Outils</p>
+                <ul>
+                    <li><i class="fal fa-plus-square"></i><p>Ajouter une zone</p></i>
+                        <ul class="slider-menu">
+                            <li title="Zone Texte"><i class="fal fa-text"></i><p>Zone texte</p></li>
+                            <li title="Zone Prix"><i class="fal fa-euro-sign"></i><p>Zone prix</p></li>
+                            <li title="Zone Media"><i class="fal fa-image"></i><p>Zone Médias</p></li>
+                        </ul>
+                    </li>
+
+                    <li title="Déplacer"><i class="fal fa-arrows"></i><p>Déplacer</p></li>
+                    <li title="Supprimer"><i class="fal fa-trash-alt"></i><p>Supprimer</p></li>
+                    <li title="Dupliquer"><i class="fal fa-copy"></i><p>Dupliquer</p></li>
+                    <li title="Transformation" class="disabled"><i class="fal fa-vector-square"></i><p>Transformation manuelle</p></li>
+                    <li title="Arranger"><i class="fal fa-layer-group"></i><p>Organiser</p>
+                        <ul class="slider-menu">
+                            <li title="Avancer une zone"><i class="fal fa-layer-plus"></i><p>Avancer une Zone</p></li>
+                            <li title="Reculer une zone"><i class="fal fa-layer-minus"></i><p>Reculer une zone</p></li>
+                            <li title="Mettre au premier plan"><i class="fal fa-bring-front"></i><p>Mettre au premier plan</p></li>
+                            <li title="Mettre au dernier plan"><i class="fal fa-send-back"></i><p>Mettre au dernier plan</p></li>
+                        </ul>
+                    </li>
+                    <li title="Agrandir"><i class="fal fa-search-plus"></i><p>Agrandir</p></li>
+                    <li title="Diminuer"><i class="fal fa-search-minus"></i><p>Diminuer</p></li>
+                </ul>
+            </li>
+        </ul>
+        <div class="identity">
+            <p>Ici le nom du template</p>
+            <span>Ici la date de la derniére sauvegarde</span>
+        </div>
+    </nav>
+    <div class="toolbar template-toolsmenu">
+
+        {%  if 'stage2' in path(app.request.attributes.get('_route')) %}
+        <div class="modal-toolbar tools" id="modal-toolbar">
+            <ul>
+                <li data-modal="background" class="tool" data-tool="ZoneBackgroundAssignerTool"><span>Arrière plan</span><i class="fal fa-image"></i></li>
+                <li data-modal="text" class="tool" data-tool="TextZoneContentAssignerTool"><span>Texte</span><i class="fal fa-text"></i></li>
+                <li data-modal="price" class="tool" data-tool="PriceZoneContentAssignerTool"><span>Prix</span><i class="fal fa-euro-sign"></i></li>
+                <li data-modal="medias" class="tool" data-tool="MediaZoneContentAssignerTool"><span>Médias</span><i class="fal fa-photo-video"></i></li>
+            </ul>
+        </div>
+        {% endif %}
+
+        <div id="main-toolbox" class="tools">
+            <ul>
+                <li title="Ajouter une zone" class="tool" data-tool="ZoneCreatorTool"><span>Ajouter une zone</span><i class="fal fa-plus-square"></i>
+                    {%  if 'stage2' in path(app.request.attributes.get('_route')) %}
+                    <ul class="slider-menu">
+                        <li title="Zone Texte" class="tool" data-tool="ZoneTextCreatorTool"><span>Texte</span><i class="fal fa-text"></i></li>
+                        <li title="Zone Prix" class="tool" data-tool="ZonePriceCreatorTool" ><span>Prix</span><i class="fal fa-euro-sign"></i></li>
+                        <li title="Zone Media" class="tool" data-tool="ZoneMediaCreatorTool"><span>Média</span><i class="fal fa-image"></i></li>
+                    </ul>
+                    {% endif %}
+                </li>
+                <li title="Déplacer" class="tool" data-tool="ZoneDraggerTool"><span>Déplacer</span><i class="fal fa-arrows bold"></i></li>
+                <li title="Supprimer" class="tool" data-tool="ZoneRemoverTool"><span>Supprimer</span><i class="fal fa-trash-alt"></i></li>
+                <li title="Dupliquer" class="tool" data-tool="ZoneDuplicatorTool"><span>Dupliquer</span><i class="fal fa-copy"></i></li>
+                <li title="Transformation" class="tool" data-tool="ZoneResizerTool"><span>Transformation</span><i class="fal fa-vector-square"></i></li>
+                <li title="Arranger" class="tool" data-tool="ZonePriorityManagerTool"><span>Organiser</span><i class="fal fa-layer-group"></i>
+                    <ul class="subMenu subTools slider-menu" >
+                        <li title="Avancer une zone" class="tool" data-tool="ZonePriorityAboveTool"><span>Avancer une zone</span><i class="fal fa-layer-plus"></i></li>
+                        <li title="Reculer une zone"class="tool" data-tool= "ZonePriorityBellowTool"><span>Reculer une zone</span><i class="fal fa-layer-minus"></i></li>
+                        <li title="Mettre au premier plan" class="tool" data-tool= "ZonePriorityForegroundTool"><span>Mettre au premier plan</span><i class="fal fa-bring-front"></i></li>
+                        <li title="Mettre en arriere plan" class="tool" data-tool= "ZonePriorityBackgroundTool"><span>Mettre au dernier plan</span><i class="fal fa-send-back"></i></li>
+                    </ul>
+                </li>
+                <li title="Zoomer" id="zoom" class="tool" data-tool="ZoneZoomOnTool"><span>Zoomer</span><i class="fal fa-search"></i>
+                    <ul class="subMenu subTools slider-menu">
+                        <li title="Agrandir" id="enlarge" class="tool" data-subtool="ZoneZoomIncreaserTool"><span>Agrandir</span><i class="fal fa-search-plus"></i></li>
+                        <li title="Diminuer" id="decrease" class="tool" data-subtool="ZoneZoomDecreaserTool"><span>Diminuer</span><i class="fal fa-search-minus"></i></li>
+                    </ul>
+                </li>
+                <li title="Masquet les zones" id="toggle-zone" class="tool" data-tool="ZoneMaskerTool"><span>Masquer les zones</span><i class="fal fa-eye"></i></li>
+            </ul>
+        </div>
+    </div>
+    <section>
+        <div class="container-zone" id="container-zone">
+            <!--<div class="zone" id="zone-1" data-type="zone">
+                <div class="sub-zone price" data-type="price" data-name="zone-price-1">
+                    <div class="prix6">
+                        <span class="unite6">22</span>
+                        <span class="euro6">€</span>
+                        <span class="centime6">20</span>
+                    </div>
+                </div>
+                <div class="sub-zone text text-1" id="text-1" data-type="text" data-name="zone-text-1"><p class="classe-2" contenteditable>Lorem ipsum dolor sit amet</p></div>
+                <div class="sub-zone medias" id="media-1" data-type="medias" data-name="zone-media-1"></div>
+            </div>
+            <div class="zone" id="zone-2" data-type="zone"></div>!-->
+        </div>
+    </section>
+</main>
+<!-----------------------INFOS-------------------->
+<div class="infos none template-toolsmenu">
+    <span class="close" title="Fermer"><i class="fal fa-times"></i></span>
+    <div class="tools">
+        <h2>Infos zone</h2>
+        <ul class="links">
+            <li class="tool ZoneAssociationTool" data-tool="ZoneAssociationTool" data-type="associate" title="Associer des zones" ><span>Associer des Zones</span></li>
+        </ul>
+        <div class="infos__container__zoneInfosGestioner">
+            <div class="input-group">
+                <label for="name">Nom</label>
+                <input type="text" name="name" id="name">
+            </div>
+            <div class="input-group">
+                <label for="type">Type</label>
+                <select name="type" id="type">
+                    <option value="zone">Zone</option>
+                    <option value="media">Média</option>
+                    <option value="price">Prix</option>
+                    <option value="text">Texte</option>
+                </select>
+            </div>
+            <div class="input-group">
+                <label for="referent">Positionné par rapport à</label>
+                <div id="wrapping-div">
+                    <div id="wrapper-div">&nbsp;</div>
+                    <select name="referent" id="referent" disabled>
+                        <option value="selectedReferent">Template</option>
+                    </select></div>
+            </div>
+            <div class="container-input">
+                <div class="input-group">
+                    <label for="posX">Position en X</label>
+                    <input type="text" name="posX" id="posX">
+                </div>
+                <div class="input-group">
+                    <label for="posY">Position en Y</label>
+                    <input type="text" name="posY" id="posY">
+                </div>
+            </div>
+            <div class="container-input">
+                <div class="input-group">
+                    <label for="width">Largeur</label>
+                    <input type="text" name="width" id="width">
+                </div>
+                <div class="input-group">
+                    <label for="height">Hauteur</label>
+                    <input type="text" name="height" id="height">
+                </div>
+            </div>
+        </div>
+    <div class="infos__container__zoneContentGestionner">
+        <button><h3>Gestion du contenu de zone</h3></button>
+    </div>
+    </div>
+</div>
+    <!-----------------------BACKGROUNDEDITOR-------------------->
+    <div class="modal background-editor none" id="background">
+        <div class="popup">
+            <span class="close" title="Fermer"><i class="fal fa-times"></i></span>
+            <div class="left-container">
+                <div class="miniature top-left-container none">
+                    <h2>Choisissez vos zones</h2>
+                    <div class="container">
+                        <div data-id="container-zone"></div>
+                    </div>
+                    <p>Cliquez dans les zones ou vous souhaitez appliquer les modifications</p>
+                </div>
+                <div class="containers bottom-left-container">
+                    <h2>Titre par default</h2>
+                    <div id="upload-background" class="none">
+                        <form method="" action="" id="upload-background">
+                            <div class="file-group">
+                                <label for="files-background"><i class="fas fa-upload"></i>Uploader des images</label>
+                                <input type="file" name="files[]" id="files-background" multiple>
+                                <img class="loader" src="{{ asset('build/utilities/loader.gif') }}">
+                                <p class="message success">Lorem ipsum dolor sit amet consectetur adipisicing elit</p>
+                            </div>
+                        </form>
+                    </div>
+                    <div id="choose-text-style" class="none">
+
+                        <ul class="classes-text">
+                            {%  if  classNames['text'] is defined %}
+                            {% for className in classNames['text'] %}
+
+
+                            <li class="class-text">
+                            <div class="class-text__flex-container">
+                                <span>Nom du style</span>
+                                <div>
+                                <button class="hidden-btn">
+                                    <i class="fal fa-trash" title="Supprimer"></i>
+                                </button>
+                                <button class="hidden-btn">
+                                    <i class="fal fa-file-import" title="Importer"></i>
+                                </button>
+                            </div>
+                            </div>
+                                {% for incrustElementContent in className['elements']|slice(0,1) %}
+                                    <div class="incrust-style-wrapper" data-id="{{className['id']}}" data-type="{{ className['type'] }}">
+                                        <p class="{{ incrustElementContent['class'] }}" data-id="{{ incrustElementContent['id'] }}" data-incruste="{{ className['type'] }}" data-type = "{{ incrustElementContent['type'] }}" data-order="{{ loop.index-1 }}" data-content="{{ incrustElementContent['content'] }}">{{ incrustElementContent['content'] }}</p>
+                                    </div>
+                                {% endfor %}
+                            </li>
+                            {% endfor %}
+                            {%  endif %}
+                        </ul>
+                        <div class="button-group">
+                            <button class="btn comfirm">valider</button>
+                        </div>
+                    </div>
+                    <div id="choose-price-style" class="none">
+                        <form class="choose-type-incrust">
+
+                            <span>Type d'incruste</span>
+                            <div class="radios-group">
+                                <div class="radio">
+                                    <input type="radio" name="type" id="price-incrust" value="price" checked>
+                                    <label for="price-incrust">Prix</label>
+                                </div>
+                                <div class="radio">
+                                    <input type="radio" name="type" id="rupture-incrust" value="rupture">
+                                    <label for="rupture-incrust">Rupture</label>
+                                </div>
+                            </div>
+                        </form>
+                        <div class="list-prices">
+                            <ul class="classes-text">
+                                {% if classNames['price'] is defined %}
+                                    {% for className in classNames['price'] %}
+
+                                        <li class="class-text">
+                                            <div class="class-text__flex-container">
+                                                <span>Nom du style</span>
+                                                <div>
+                                                    <button class="hidden-btn">
+                                                        <i class="fal fa-trash" title="Supprimer"></i>
+                                                    </button>
+                                                    <button class="hidden-btn">
+                                                        <i class="fal fa-file-import" title="Importer"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <div class="incrust-style-wrapper" data-id="{{ className['id'] }}" data-type="{{ className['type'] }}" >
+
+                                                    {% for  element in  className['elements'] %}
+                                                    <div class="{{ element['class'] }}" data-incruste="{{ className['type'] }}" data-type="{{ element['type'] }}" data-id="{{ element['id'] }}" data-order="{{ loop.index-1 }}">
+                                                        {% for children in element['childrens'] %}
+                                                        <span class="{{ children['class']}}" data-incruste="{{ className['type'] }}" data-id="{{ children['id'] }}" data-type="{{ children['type'] }}" data-order="{{ loop.index-1 }}" data-content="{{ children['content'] }}">{{  children['content'] }}</span>
+                                                        {% endfor %}
+
+                                                    {#<span class="{{ className['elements'] }}"></span>#}
+                                                </div>
+                                                    {% endfor %}
+                                                {#<p class="{{ className['name'] }}" data-id="{{ className['id'] }}">Ici la description de votre zone</p>#}
+                                            </div>
+                                        </li>
+                                    {% endfor %}
+                                {% endif %}
+                            </ul>
+                        </div>
+                        <div class="button-group">
+                            <button class="btn comfirm">valider</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="right-container">
+                <h2>Choisissez un fond</h2>
+                <div id="list-background" class="none">
+                    <div class="select-background__choice" id="select-background__choice--colorChoice">
+                        <div class="radios-group">
+                            <div class="checkbox">
+                                <input type="checkbox" name="activate-background-color" id="activate-background-color" value="color">
+                                <label for="activate-background-color"><h3>Appliquer une couleur de fond</h3></label>
+                            </div>
+                        </div>
+                        <div class="select-background__choice--content disabled-element">
+                            <div class="select-background__choice--content__wrapper wrapper">&nbsp;</div>
+                            <input type="color" name="background-color" value="#000000">
+                        </div>
+                    </div>
+                    <div class="select-background__choice" id="select-background__choice--imageChoice">
+                        <div class="radios-group">
+                            <div class="checkbox">
+                                <input type="checkbox" name="activate-background-image" id="activate-background-image" value="image">
+                                <label for="activate-background-image"><h3>Appliquer une image de fond</h3></label>
+                            </div>
+                        </div>
+                        <div class="select-background__choice--content disabled-element">
+                            <div class="select-background__choice--content__wrapper wrapper" >&nbsp;</div>
+                            <div class="media_list">
+                                <div class="media">
+                                    <div class="select-background__choice--content__media__wrapper wrapper">&nbsp;</div>
+                                    <img src="{{ asset('build/backgrounds/fond_gris.png') }}">
+                                    <span>Lorem ipsum dolor</span>
+                                </div>
+                                <div class="media">
+                                    <div class="select-background__choice--content__media__wrapper wrapper">&nbsp;</div>
+                                    <img src="{{ asset('build/backgrounds/areas.png') }}">
+                                    <span>Lorem ipsum dolor</span>
+                                </div>
+                                <div class="media">
+                                    <div class="select-background__choice--content__media__wrapper wrapper">&nbsp;</div>
+                                    <img src="{{ asset('build/backgrounds/Areas_PHILEAS_OP-ETE.jpg') }}">
+                                    <span>Lorem ipsum dolor</span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="button-group">
+                        <button class="btn comfirm">valider</button>
+                    </div>
+                </div>
+                <div id="list-medias" class="none">
+                    <form action="" method="">
+                        <div class="radios-group">
+                            <span>Filtrer par média</span>
+                            <div class="radio">
+                                <input type="radio" name="type" id="image" value="image" checked>
+                                <label for="image">Image</label>
+                            </div>
+                            <div class="radio">
+                                <input type="radio" name="type" id="video" value="video">
+                                <label for="video">Vidéo</label>
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <label>Filtrer par catégorie</label>
+                            <select name="categories">
+                                <option value="">Aucune catégorie</option>
+                                <option value="1">Catégorie n°1</option>
+                                <option value="2">Catégorie n°2</option>
+                                <option value="4">Catégorie n°4</option>
+                                <option value="6">Catégorie n°6</option>
+                            </select>
+                        </div>
+                    </form>
+                    <div class="list-medias">
+                        {#{{ dump(classNames) }}#}
+                        <ul class="incrustList mediaList ">
+                            {% if  classNames['media'] is defined %}
+                            {% for incrustMedia in classNames['media'] %}
+                                <li class="incrustlist__element">
+                                    <div class="incrustlist__element__cover cover">&nbsp;</div>
+                                    <div class="incrust-model" data-id="{{ incrustMedia['id'] }}" data-type="{{ incrustMedia['type'] }}">
+                                        {% for incrustElement in incrustMedia['elements'] | slice(0,1) %}
+                                            <img src="/build/medias/{{ incrustElement['content'] }}" data-id="{{ incrustElement['id'] }}" data-incruste="{{ incrustMedia['type'] }}" data-type="{{ incrustElement['type'] }}" data-order="{{ incrustElement['incrustOrder'] }}" data-content="{{incrustElement['content']}}">
+                                        {% endfor %}
+                                    </div>
+                                    <div class="incrustlist__element__menu">
+                                        <span class="incrustlist__element__menu__name">{{ incrustMedia['name'] }}</span>
+                                        {#<div class="incrustlist__element__menu__actions"></div>#}
+                                    </div>
+                                </li>
+                            {% endfor %}
+                            {% endif %}
+                        </ul>
+
+                        {#<div class="media" data-type="image" data-categories="" data-name="donut_caramel">#}
+                            {#<div class="wrapper">&nbsp;</div>#}
+                            {#<div class ="media-miniature" style="background-image: url('/build/medias/donut_caramel.png')"></div>#}
+                            {#<span>donut_caramel</span>#}
+                        {#</div>#}
+                        {#<div class="media" data-type="image" data-categories="1" data-name="mix_mania_granola">#}
+                            {#<div class="wrapper">&nbsp;</div>#}
+                            {#<div class ="media-miniature" style="background-image: url('/build/medias/mix_mania_granola.png')"></div>#}
+                            {#<span>mix_mania_granola</span>#}
+                        {#</div>#}
+                        {#<div  class="media" data-type="image" data-categories="1" data-name="titre_Desserts">#}
+                            {#<div class="wrapper">&nbsp;</div>#}
+                            {#<div class ="media-miniature" style="background-image: url('/build/medias/titre_Desserts.png')"></div>#}
+                            {#<span>titre_Desserts</span></div>#}
+                        {#<div  class="media" data-type="image" data-categories="6" data-name="titre_menus">#}
+                            {#<div class="wrapper">&nbsp;</div>#}
+                            {#<div class ="media-miniature" style="background-image: url('/build/medias//titre_menus.png')"></div>#}
+                            {#<span>titre_menus</span>#}
+                        {#</div>#}
+                        <div class="button-group">
+                            <button class="btn comfirm">valider</button>
+                        </div>
+                    </div>
+                </div>
+                <div id="text-incrust-style-creator" class="none">
+                    <form action="" method="" id="form-text">
+                        <div class="style-creator text-incrust-style-creator__choices">
+                            <div class="preview" id="text-preview"><p style="font-size: 30px; text-align: center;">Lorem ipsum dolor sit amet</p></div>
+                            <div class="container">
+                                <div class="input-group">
+                                    <label for="title">Titre du style</label>
+                                    <input type="text" name="title" id="title" required>
+                                </div>
+                                <div class="radios-group">
+                                    <label>Options</label>
+                                    <div class="radio">
+                                        <input type="radio"  data-type="text-align" name="text-align-text" id="left-text" value="left">
+                                        <label for="left-text" class="left"></label>
+                                        <i class="fal fa-align-left" title="Gauche"></i>
+                                    </div>
+                                    <div class="radio">
+                                        <input type="radio" class="text-align" data-type="text-align" name="text-align-text" id="center-text" value="center" checked>
+                                        <label for="center-text" class="center"></label>
+                                        <i class="fal fa-align-center" title="Centrer"></i>
+                                    </div>
+                                    <div class="radio">
+                                        <input type="radio" class="text-align" data-type="text-align" name="text-align-text" id="right-text" value="right">
+                                        <label for="right-text"></label>
+                                        <i class="fal fa-align-right" title="Droite"></i>
+                                    </div>
+                                    <div class="radio">
+                                        <input type="radio" class="text-align" data-type="text-align" name="text-align-text" id="justify-text" value="justify">
+                                        <label for="justify-text"></label>
+                                        <i class="fal fa-align-justify" title="Justifier"></i>
+                                    </div>
+                                    <div class="radio">
+                                        <input type="radio" data-type="text-decoration" name="text-decoration-text" id="initial-text" value="initial" checked>
+                                        <label for="initial-text"></label>
+                                        <i class="fal fa-text" title="Initial"></i>
+                                    </div>
+                                    <div class="radio">
+                                        <input type="radio" data-type="text-decoration" name="text-decoration-text" id="underline-text" value="underline">
+                                        <label for="underline-text"></label>
+                                        <i class="fal fa-underline" title="Souligné"></i>
+                                    </div>
+                                    <div class="radio">
+                                        <input type="radio" data-type="text-decoration" name="text-decoration-text" id="line-through-text" value="line-through">
+                                        <label for="line-through-text"></label>
+                                        <i class="fal fa-strikethrough" title="Barré"></i>
+                                    </div>
+                                    <div class="checkbox">
+                                        <input type="checkbox" data-type="font-weight" name="font-weight-text" id="bold-text" value="bold">
+                                        <label for="bold-text"></label>
+                                        <i class="fas fa-bold" title="Gras"></i>
+                                    </div>
+                                    <div class="checkbox">
+                                        <input type="checkbox" data-type="font-style" name="font-style-text" id="italic-text" value="italic">
+                                        <label for="italic-text"></label>
+                                        <i class="fas fa-italic" title="Italique"></i>
+                                    </div>
+                                </div>
+                                <div class="input-group">
+                                    <label for="font-family-text">Type de la police</label>
+                                    <select data-type="font-family" name="font-family-text" id="font-family-text">
+                                        <option value="Arial">Arial</option>
+                                        <option value="Georgia">Georgia</option>
+                                        <option value="Times New Roman">Times New Roman</option>
+                                        <option value="Verdana">Verdana</option>
+                                    </select>
+                                    <div class="file-group">
+                                        <label class="btn-grey" for="files-font-text"><i class="fas fa-upload"></i>Uploader une police</label>
+                                        <input  type="file" name="files[]" id="files-font-text" multiple>
+                                        <img class="loader" src="{{ asset('build/utilities/loader.gif') }}">
+                                        <p class="message error">Ici le texte pour expliquer l'erreur lors de l'upload</p>
+                                    </div>
+                                </div>
+                                <div class="input-group">
+                                    <label for="font-size-text">Taille en pixel</label>
+                                    <input type="number"data-type="font-size"  name="font-size-text" id="font-size-text" min="6" step="1" value="30">
+                                </div>
+                                <div class="input-group">
+                                    <label for="color-text">Couleur de la police</label>
+                                    <div>
+                                        <input type="color" data-type="color" name="color-text" id="color-text">
+                                    </div>
+                                </div>
+                                <div class="input-group">
+                                    <label for="rotate-text">Rotation en degré</label>
+                                    <input type="number" data-type="rotate" name="rotate-text" id="rotate-text" value="0" min="-360" max="360">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="button-group">
+                            <button type="button" class="btn comfirm">valider</button>
+                        </div>
+                    </form>
+                </div>
+                <div id="price-incrust-style-creator" class="style-creator price-editor create-incrust none">
+                    <form id="type-incrust" class="choose-type-incrust">
+                        <span>Type de l'incruste</span>
+
+                        <div class="radios-group">
+                            <div class="radio">
+                                <input type="radio" name="type-incrust" id="price_incrust" value="price" data-tool="ZoneContainerPriceIncrustePriceStyleCreatorTool" checked>
+                                <label for="price_incrust">Prix</label>
+                            </div>
+                            <div class="radio">
+                                <input type="radio" name="type-incrust" id="rupture_incrust" value="rupture" data-tool="ZoneContainerPriceIncrusteRuptureStyleCreatorTool">
+                                <label for="rupture_incrust">Rupture</label>
+                            </div>
+                        </div>
+                    </form>
+                    <div id ="price-incrust-style-creator__price" class="none style-creator__subtool-container">
+                        <div class="preview">
+                            <div class="incrust-element prix focused-element" data-type="prix" style="text-decoration: none; position: relative; font-size: 50px; color: #000000; font-family: Arial;">
+                                <span class="incrust-element unite prix" data-order=1 data-type="unite" style="" contenteditable>2</span><!--
+                            --><span class="incrust-element euro prix" data-order=2 data-type="euro" style="" contenteditable>€</span><!--
+                            --><span class="incrust-element separator prix" data-order=3 data-type="separator" style="" contenteditable>.</span><!--
+                            --><span class="incrust-element centime prix" data-order=4 data-type="centime" style="" contenteditable>50</span>
+                            </div>
+                        </div>
+
+                        <form action="#" method="" class="select-element-price" data-type="price">
+
+                            <div class="radios-group">
+                                <div class="radio">
+                                    <input type="radio" name="incrust" id="prix" checked>
+                                    <label for="prix">Prix</label>
+                                </div>
+                                <div class="radio">
+                                    <input type="radio" name="incrust" id="unite">
+                                    <label for="unite">Unité</label>
+                                </div>
+                                <div class="radio">
+                                    <input type="radio" name="incrust" id="euro">
+                                    <label for="euro">Euro</label>
+                                </div>
+                                <div class="radio">
+                                    <input type="radio" name="incrust" id="separator">
+                                    <label for="separator">Séparateur</label>
+                                </div>
+                                <div class="radio">
+                                    <input type="radio" name="incrust" id="centime">
+                                    <label for="centime">Centime</label>
+                                </div>
+                            </div>
+                        </form>
+                        <form action="#" method=""  class="style-creator__subtool-container__form" id="form-create-price-incrust" data-type="price">
+                            <div class="style-creator__subtool-container__form__choices">
+                                <div class="input-group">
+                                    <label for="title-price">Titre du style</label>
+                                    <input type="text" name="title-price" id="title-price" required>
+                                </div>
+                                <div class="input-group">
+                                    <label for="font-family-price">Type de la police</label>
+                                    <select data-type="font-family" name="font-family-price" id="font-family-price">
+                                        <option value="Arial">Arial</option>
+                                        <option value="Georgia">Georgia</option>
+                                        <option value="Times New Roman">Times New Roman</option>
+                                        <option value="Verdana">Verdana</option>
+                                    </select>
+                                    <div class="file-group">
+                                        <label class="btn-grey" for="files-font-price"><i class="fas fa-upload"></i>Uploader une police</label>
+                                        <input  type="file" name="files[]" id="files-font-price" multiple>
+                                        <img class="loader" src="{{ asset('build/utilities/loader.gif') }}">
+                                        <p class="message error">Ici le texte pour expliquer l'erreur lors de l'upload</p>
+                                    </div>
+                                </div>
+                                <div class="input-group">
+                                    <label for="color-price">Couleur de la police</label>
+                                    <div>
+                                        <input type="color" data-type="color" name="color-price" id="color-price">
+                                    </div>
+                                </div>
+                                <div class="radios-group">
+                                    <label>Options</label>
+                                    <div class="radio">
+                                        <input type="radio" data-type="text-decoration" name="text-decoration-price" id="none-price" value="none" checked>
+                                        <label for="none-price"></label>
+                                        <i class="fal fa-text" title="Initial"></i>
+                                    </div>
+                                    <div class="radio">
+                                        <input type="radio" data-type="text-decoration" name="text-decoration-price" id="underline-price" value="underline">
+                                        <label for="underline-price"></label>
+                                        <i class="fal fa-underline" title="Souligné"></i>
+                                    </div>
+                                    <div class="radio">
+                                        <input type="radio" data-type="text-decoration" name="text-decoration-price" id="line-through-price" value="line-through">
+                                        <label for="line-through-price"></label>
+                                        <i class="fal fa-strikethrough" title="Barré"></i>
+                                    </div>
+                                    <div class="checkbox">
+                                        <input type="checkbox" data-type="font-weight" name="font-weight-price" id="bold-price" value="bold">
+                                        <label for="bold-price"></label>
+                                        <i class="fas fa-bold" title="Gras"></i>
+                                    </div>
+                                    <div class="checkbox">
+                                        <input type="checkbox" data-type="font-style" name="font-style-price" id="italic-price" value="italic">
+                                        <label for="italic-price"></label>
+                                        <i class="fas fa-italic" title="Italique"></i>
+                                    </div>
+                                </div>
+                                <div class="input-group">
+                                    <label for="font-size-price">Taille en pixel</label>
+                                    <input type="number" data-type="font-size" name="font-size-price" id="font-size-price" min="6" step="1" value="50">
+                                </div>
+                                <div class="input-group">
+                                    <label for="rotate-price">Rotation en degré</label>
+                                    <input type="number" data-type="rotate" name="rotate-price" id="rotate-price" value="" min="-360" max="360">
+                                </div>
+                                <div class="checkbox">
+                                    <input type="checkbox" data-type="display" name="none" id="none" value="none">
+                                    <label for="none">Cacher cet élément</label>
+                                </div>
+                            </div>
+                            <div class="button-group">
+                                <button type="button" class="btn comfirm">valider</button>
+                                <img src="{{ asset('build/utilities/loader.gif') }}" class="hidden loader">
+                            </div>
+                        </form>
+                    </div>
+                    <div id="price-incrust-style-creator__rupture" class="none style-creator__subtool-container">
+                        <div class="preview">
+                            <span class="rupture element-selected" style="font-size: 50px; font-family: Arial; padding: 8px; position: absolute;" contenteditable>En rupture</span>
+                        </div>
+                        <span class="delete-background hidden" data-type="background-image" title="Supprimer l'image"><i class="fas fa-trash"></i>Supprimer l'image</span>
+
+                        <form action="#" method="" class="select-element-rupture" data-type="rupture">
+                            <div class="radios-group">
+                                <div class="radio">
+                                    <input type="radio" name="rupture" id="rupture" checked>
+                                    <label for="rupture">Rupture</label>
+                                </div>
+                            </div>
+                        </form>
+                        <form action="#" method="" class="style-creator__subtool-container__form" id="form-create-rupture-incrust" data-type="rupture">
+                            <div class="style-creator__subtool-container__form__choices">
+                                <div class="input-group">
+                                    <label for="title-rupture">Titre du style</label>
+                                    <input type="text" name="title-rupture" id="title-rupture" required>
+                                </div>
+                                <div class="input-group">
+                                    <label for="font-family-rupture">Type de la police</label>
+                                    <select data-type="font-family" name="font-family-rupture" id="font-family-rupture">
+                                        <option value="Arial">Arial</option>
+                                        <option value="Georgia">Georgia</option>
+                                        <option value="Times New Roman">Times New Roman</option>
+                                        <option value="Verdana">Verdana</option>
+                                    </select>
+                                    <div class="file-group">
+                                        <label class="btn-grey" for="files-fonts-rupture"><i class="fas fa-upload"></i>Uploader une police</label>
+                                        <input  type="file" name="files[]" id="files-font-rupture" multiple>
+                                        <img class="loader" src="{{ asset('build/utilities/loader.gif') }}">
+                                        <p class="message error">Ici le texte pour expliquer l'erreur lors de l'upload</p>
+                                    </div>
+                                </div>
+                                <div class="input-group">
+                                    <label for="color-rupture">Couleur de la police</label>
+                                    <div>
+                                        <input type="color" data-type="color" name="color-rupture" id="color-rupture">
+                                    </div>
+                                </div>
+                                <div class="radios-group">
+                                    <label>Options</label>
+                                    <div class="radio">
+                                        <input type="radio" data-type="text-align" name="text-align-rupture" id="left-rupture" value="left" checked>
+                                        <label for="left-rupture" class="left"></label>
+                                        <i class="fal fa-align-left" title="Gauche"></i>
+                                    </div>
+                                    <div class="radio">
+                                        <input type="radio" data-type="text-align" name="text-align-rupture" id="center-rupture" value="center">
+                                        <label for="center-rupture" class="center"></label>
+                                        <i class="fal fa-align-center" title="Centrer"></i>
+                                    </div>
+                                    <div class="radio">
+                                        <input type="radio" data-type="text-align" name="text-align-rupture" id="right-rupture" value="right">
+                                        <label for="right-rupture"></label>
+                                        <i class="fal fa-align-right" title="Droite"></i>
+                                    </div>
+                                    <div class="radio">
+                                        <input type="radio" data-type="text-align" name="text-align-rupture" id="justify-rupture" value="justify">
+                                        <label for="justify-rupture"></label>
+                                        <i class="fal fa-align-justify" title="Justifier"></i>
+                                    </div>
+                                    <div class="radio">
+                                        <input type="radio" data-type="text-decoration" name="text-decoration-rupture" id="initial-rupture" value="initial" checked>
+                                        <label for="initial-rupture"></label>
+                                        <i class="fal fa-text" title="Initial"></i>
+                                    </div>
+                                    <div class="radio">
+                                        <input type="radio" data-type="text-decoration" name="text-decoration-rupture" id="underline-rupture" value="underline">
+                                        <label for="underline-rupture"></label>
+                                        <i class="fal fa-underline" title="Souligné"></i>
+                                    </div>
+                                    <div class="radio">
+                                        <input type="radio" data-type="text-decoration" name="text-decoration-rupture" id="line-through-rupture" value="line-through">
+                                        <label for="line-through-rupture"></label>
+                                        <i class="fal fa-strikethrough" title="Barré"></i>
+                                    </div>
+                                    <div class="checkbox">
+                                        <input type="checkbox" data-type="font-weight" name="font-weight-rupture" id="bold-rupture" value="bold">
+                                        <label for="bold-rupture"></label>
+                                        <i class="fas fa-bold" title="Gras"></i>
+                                    </div>
+                                    <div class="checkbox">
+                                        <input type="checkbox" data-type="font-style" name="font-style-rupture" id="italic-rupture" value="italic">
+                                        <label for="italic-rupture"></label>
+                                        <i class="fas fa-italic" title="Italique"></i>
+                                    </div>
+                                </div>
+                                <div class="input-group">
+                                    <label for="font-size-rupture">Taille en pixel</label>
+                                    <input type="number" data-type="font-size" name="font-size-rupture" id="font-size-rupture" min="6" step="1" value="50">
+                                </div>
+                                <div class="input-group">
+                                    <label for="rotate-rupture">Rotation en degré</label>
+                                    <input type="number" data-type="rotate" name="rotate-rupture" id="rotate-rupture" value="0" min="-360" max="360">
+                                </div>
+                                <div class="radios-group">
+                                    <label for="color-rupture">Couleur de fond</label>
+                                    <div class="checkbox">
+                                        <input type="color" data-type="background-color" name="background-color-rupture" value="#000000">
+                                        <span class="delete-background hidden" data-type="background-color" title="Supprimer la couleur de fond"><i class="fas fa-trash"></i>Supprimer la couleur de fond</span>
+                                    </div>
+                                </div>
+                                <div class="slider-ruptures">
+                                    <ul class="container-ruptures">
+{#                                    {% for rupture in ressources['medias']['ruptures'] %}#}
+{#                                        <li {%  if loop.index > 1 %} class="none" {% endif %} data-position="{{ loop.index -1}}"><img src="{{ asset('build/medias/ruptures/' ~rupture['filename']~'.'~rupture['ext']~'' )}}"  ></li>#}
+{#                                    {% endfor %}#}
+
+                                    </ul>
+                                    <p>Cliquez sur l'image pour l'ajouter dans l'incruste</p>
+                                    <ul>
+                                        <li class="navigate" data-direction="left"><span  title="Image précédente" ><i class="fas fa-long-arrow-alt-left"></i></span></li>
+{#                                        <li><span class="currentRuptureIndex">{{ ressources['medias']['ruptures'] | length > 0 ? 1 : 0}}</span> sur {{ ressources['medias']['ruptures'] | length }}</li>#}
+                                        <li class="navigate" data-direction="right"><span  title="Image suivante" ><i class="fas fa-long-arrow-alt-right"></i></span></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="button-group">
+                                <button class="btn comfirm">valider</button>
+                                <img src="{{ asset('build/utilities/loader.gif') }}" class="hidden loader">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+<!-------------------------------ASSOCIATE----------------------------->
+
+
+<!----------------------------------NEW---------------------------->
+<div class="modal none" id="new">
+    <div class="popup">
+        <span class="close" title="Fermer"><i class="fal fa-times"></i></span>
+        <h2>Nouveau</h2>
+        <form action="" method="">
+            <div class="radios-group">
+                <span>Orientation du template</span>
+                <div class="radio">
+                    <input type="radio" name="orientation" id="horizontal" checked>
+                    <label for="horizontal">Horizontal</label>
+                </div>
+                <div class="radio">
+                    <input type="radio" name="orientation" id="vertical">
+                    <label for="vertical">Vertical</label>
+                </div>
+            </div>
+            <div class="input-group">
+                <label for="name">Nom du template</label>
+                <input type="text" name="name" id="name">
+            </div>
+            <div>
+                <button class="btn">valider</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<!--<script src="js/utilities.js"></script>
+<script src="js/Modal.js"></script>
+<script src="js/associate.js"></script>
+<script src="js/Background.js"></script>
+<script src="js/Text.js"></script>
+<script src="js/Medias.js"></script>
+<script src="js/Price.js"></script>-->
+<script>
+    $(_ => {
+        // On initialise les différents modules du template
+        /*let price = new Price()
+        let medias = new Medias()
+        let text = new Text()
+        let background = new Background()
+        text.run()
+        price.run()
+        medias.run()
+        background.run()*/
+    })
+    // Lors d'un clic sur l'une des icônes des modal
+    /*$('#modal-toolbar ul li, nav ul li:nth-child(2) ul li').on('click', e => {
+        // Type de la modal à ouvrir
+        let element = $(e.currentTarget).data('modal')
+        // On affiche la modal et on génére un miniature du template selon le type de zone
+        switch(element) {
+            case 'price':
+                let priceModal = new Modal(element)
+                priceModal.init()
+                break
+            case 'medias':
+                let mediasModal = new Modal(element)
+                mediasModal.init()
+                break
+            case 'text':
+                let textModal = new Modal(element)
+                textModal.init()
+                break
+            case 'background':
+                let backgroundModal = new Modal(element)
+                backgroundModal.init()
+                break
+        }
+    })*/
+</script>
+    {% block javascripts %}
+        {{ encore_entry_script_tags('template')  }}
+
+        <!-- Renders app.js & a webpack runtime.js file
+            <script src="/build/runtime.js"></script>
+            <script src="/build/app.js"></script> -->
+    {% endblock %}
+</body>
+</html>

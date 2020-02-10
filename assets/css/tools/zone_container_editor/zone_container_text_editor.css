@@ -1,0 +1,28 @@
+#text-incrust-style-creator .preview {
+    background-color: #f0f0f0;
+    margin-top: 10px;
+    height: 300px;
+    line-height: 300px;
+    overflow: hidden;
+    border: 1px solid #d6d6d6;
+}
+#text-incrust-style-creator .radios-group, .price-editor .radios-group {
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 5px 0;
+}
+#text-incrust-style-creator .radios-group .radio, #text-style-creator .radios-group .checkbox, .price-editor .radios-group .radio, .price-editor .radios-group .checkbox {
+    display: flex;
+    margin-right: 15px;
+}
+
+#choose-text-style ul.classes-text{
+    overflow:auto;
+    max-height:400px;
+}
+
+.class-text__flex-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}

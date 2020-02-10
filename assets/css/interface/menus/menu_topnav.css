@@ -1,0 +1,116 @@
+/***************************************************/
+/**********************NAV**************************/
+/***************************************************/
+nav {
+    width: 100%;
+    top: 0;
+    height: 50px;
+    position: fixed;
+    background-color: #385b72;
+    z-index: 500;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+nav > ul {
+    display: flex;
+}
+nav > ul li {
+    position: relative;
+    width: 150px;
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    color: #ffffff;
+    font-size: 0.9rem;
+    border-right: 1px solid #ffffff;
+    cursor: pointer;
+    padding-left: 10px;
+}
+nav ul li:last-child {
+    border-right: none;
+}
+nav ul li i {
+    color: #ffffff;
+}
+nav > ul > li p i {
+    transform-origin: center;
+    position: relative;
+    right: -65px;
+}
+nav > ul > li:hover p i {
+    transform: rotate(45deg);
+}
+nav > ul > li > p:after, nav > ul > li > ul > li:not(.disabled) > p:after, nav > ul > li > ul > li > ul > li > p:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    margin-bottom: -5px;
+    background-color: #ffffff;
+    transform: scaleX(0);
+    transition: .5s;
+}
+nav > ul > li > ul > li > ul > li > p:after {
+    background-color: #385b72;
+}
+nav > ul > li:hover > p:after, nav > ul > li > ul > li:hover:not(.disabled) > p:after, nav > ul > li > ul > li > ul > li:hover > p:after, nav > ul > li.active > p:after {
+    transform: scaleX(1);
+}
+nav ul li p {
+    font-size: 0.8rem;
+    margin-left: 5px;
+    color: #ffffff;
+    font-style: italic;
+    position: relative;
+    cursor: pointer;
+}
+nav ul li.disabled p {
+    cursor: default;
+}
+nav ul ul {
+    background-color: #385b72;
+    position: absolute;
+    top: 120%;
+    left: 0;
+    visibility: hidden;
+    transition: all .2s;
+}
+nav ul ul li span {
+    margin-left: 5px;
+}
+nav > ul > li:hover > ul, nav ul ul li:hover ul {
+    visibility: visible;
+}
+nav ul ul li {
+    width: 200px;
+    justify-content: flex-start;
+    font-weight: normal;
+    border: none;
+}
+nav ul ul ul {
+    position: absolute;
+    left: 100%;
+    top: 0;
+    visibility: hidden;
+    background-color: #ffffff;
+    border: 1px solid #385b72;
+}
+nav ul ul ul li p, nav ul ul ul li i {
+    color: #385b72;
+}
+nav > div.identity {
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 0.8rem;
+    margin-right: 20px;
+    text-align: right;
+}
+nav > div.identity span {
+    font-weight: lighter;
+    font-size: 0.7rem;
+}

@@ -1,0 +1,206 @@
+
+/*.associate .popup div:last-child form > div {
+    width: 40%;
+}*/
+/*****************************************************************/
+/*****************************MEDIAS******************************/
+/*****************************************************************/
+.medias .radios-group {
+    width: 100%;
+    margin-top: 20px;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.medias form {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.medias form .input-group:first-child {
+    width: 50%;
+    margin-right: 5%;
+}
+.medias form .input-group:nth-child(2) {
+    width: 40%;
+}
+.medias form .radios-group span {
+    margin-bottom: 0;
+}
+.medias form .radios-group .radio {
+    margin-bottom: 0;
+    margin-right: 10px;
+}
+.medias .list-medias {
+    margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    min-height: 300px;
+    max-height: 300px;
+    justify-content: flex-start;
+    align-items: flex-start;
+    overflow-y: auto;
+}
+.medias .list-medias div {
+    width: 130px;
+    margin-left: 10px;
+    margin-bottom: 10px;
+    opacity: 0.8;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.medias .list-medias div:first-child {
+    margin-left: 0;
+}
+.medias .list-medias div div {
+    width: 100%;
+    height: 130px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    border: 1px solid #385b72;
+}
+.medias .list-medias div span {
+    margin-top: 5px;
+    font-size: 0.7rem;
+    word-wrap: break-word;
+    text-align: center;
+    color: #385b72;
+}
+.all-zones {
+    transform-origin: center;
+}
+
+
+.selected-label{
+    color: rgba(0,0,0,0.3)!important;
+    padding: 20px!important;
+    background: rgba(255,255,255,0.2)!important;
+}
+
+
+
+/********************************************************/
+/************************PRICE***************************/
+/********************************************************/
+.price .popup .list-prices {
+    display: flex;
+    max-height: 200px;
+}
+.price .popup .list-prices > div {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    height: 100px;
+    width: 100px;
+    border: 1px solid #385b72;
+    margin-right: 10px;
+}
+/********************************************************/
+/********************BACKGROUND**************************/
+/********************************************************/
+.background form {
+    margin-bottom: 20px;
+}
+.background .popup > div.list-background > div {
+    display: flex;
+    flex-wrap: wrap;
+}
+.background .popup > div.list-background > div > div {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 10px;
+    margin-right: 5px;
+    width: 20%;
+    cursor: pointer;
+}
+.background .popup > div.list-background div img {
+    border: 2px solid #385b72;
+}
+.background .popup > div.list-background div.image-selected img {
+    border: 2px solid #bd25e3;
+}
+.background .popup > div.list-background div span {
+    margin-top: 5px;
+    color: #385b72;
+    font-size: 0.7rem;
+}
+.background .popup > div.list-background div.image-selected span {
+    color: #bd25e3;
+}
+.background .popup > .radios-group .radio input[type="color"] {
+    margin-left: 5px;
+}
+/********************************************************/
+/***********************TEXT EDITOR**********************/
+/********************************************************/
+.text-editor .popup .classes {
+    margin: 20px 0;
+}
+.text-editor .classes > div > div {
+    max-height: 300px;
+    overflow-y: auto;
+    display: block;
+}
+.text-editor .classes > div > div > div > span {
+    font-weight: bold;
+    display: block;
+    color: #385b72;
+    font-style: italic;
+    margin-bottom: 2px;
+}
+.text-editor .classes > div > div > div > p {
+   border: 1px solid #385b72;
+   margin-bottom: 10px;
+   padding: 10px;
+   cursor: pointer;
+   width: 99%;
+   overflow: hidden;
+}
+.text-editor .classes > div > div > div.text-selected > span {
+    color: #bd25e3;
+}
+.text-editor .classes > div > div > div.text-selected > p {
+    border: 1px solid #bd25e3;
+}
+.text-editor .classes > div > div > div:last-child {
+    margin-bottom: 0
+}
+.text-editor .radios-group {
+    flex-direction: row;
+    margin: 10px 0;
+}
+.text-editor .radios-group .radio, .text-editor .radios-group .checkbox {
+    display: flex;
+    margin-right: 25px;
+}
+.text-editor .radios-group i {
+    font-size: 1.1rem;
+    margin-top: 1px;
+    font-weight: bold;
+}
+.text-editor form .input-group:nth-child(4) div {
+    display: flex;
+    align-items: center;
+}
+.text-editor form .input-group:nth-child(4) div input {
+    margin-right: 5px;
+}
+.text-editor form .input-group:nth-child(4) div p:first-of-type {
+    color: #000000;
+    font-size: 1rem;
+    margin-right: 10px;
+}
+.text-editor .preview {
+    margin-top: 10px;
+    border-top: 2px solid #385b72;
+    height: 150px;
+    line-height: 150px;
+    overflow: hidden;
+}
+.text-editor .preview p {
+    transform-origin: center;
+}

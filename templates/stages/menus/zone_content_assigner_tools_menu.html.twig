@@ -1,0 +1,10 @@
+<div class="modal-toolbar tools" id="modal-toolbar">
+    <ul>
+        <li data-modal="background" class="tool" data-tool="ZoneBackgroundAssignerTool"><span>Arrière plan</span><i class="fal fa-image"></i></li>
+        {% if(stage ==2 or stage == 3 ) %}
+            <li data-modal="text" class="tool" data-tool="TextZoneContentAssignerTool"><span>Texte</span><i class="fal fa-text"></i></li>
+            <li data-modal="price" class="tool" data-tool="PriceZoneContentAssignerTool"><span>Prix</span><i class="fal fa-euro-sign"></i></li>
+            <li data-modal="medias" class="tool" data-tool="MediaZoneContentAssignerTool"><span>Médias</span><i class="fal fa-photo-video"></i></li>
+        {% endif %}
+    </ul>
+</div>

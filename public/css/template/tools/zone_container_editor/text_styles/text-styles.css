@@ -1,0 +1,115 @@
+.classe-1 {
+    font-family: Verdana;
+    color: red;
+    font-size: 16px;
+    font-weight: bold
+}
+.classe-2 {
+    font-family: Times New Roman;
+    color: orange;
+    font-size: 30px;
+    font-style: italic;
+}
+.classe-3 {
+    font-family: Arial;
+    color: blue;
+    font-size: 20px;
+    font-weight: bold
+}
+.classe-4 {
+    color: purple;
+    font-size: 19px;
+    font-style: italic;
+}
+.classe-5 {
+    font-family: Arial;
+    color: yellow;
+    font-size: 32px;
+}
+.classe-6 {
+    color: brown;
+    font-size: 24px;
+    font-weight: bold;
+}
+.classe-7 {
+    color: black;
+    font-size: 22px;
+    font-weight: bold;
+}
+.classe-8 {
+    font-family: Arial;
+    color: green;
+    font-size: 35px;
+    font-weight: bold;
+}
+
+.text85 {
+    color : #8000ff ;
+    font-size : 26px ;
+    text-align : left ;
+    font-family : Arial ;
+    font-weight : bold ;
+    font-style : italic ;
+    text-decoration : initial ;
+    transform : rotate(4deg) ;
+}
+.text86 {
+    color : #000000 ;
+    font-size : 30px ;
+    text-align : left ;
+    font-family : Arial ;
+    font-weight : bold ;
+    font-style : italic ;
+    text-decoration : initial ;
+    transform : rotate(2deg) ;
+}
+.text87 {
+    color : #000000 ;
+    font-size : 27px ;
+    text-align : center ;
+    font-family : Arial ;
+    font-weight : bold ;
+    font-style : italic ;
+    text-decoration : initial ;
+    transform : rotate(6deg) ;
+}
+.text88 {
+    color : #ff0000 ;
+    font-size : 27px ;
+    text-align : right ;
+    font-family : Arial ;
+    font-weight : bold ;
+    font-style : italic ;
+    text-decoration : line-through ;
+    transform : rotate(6deg) ;
+}
+.text89 {
+    color : #8000ff ;
+    font-size : 29px ;
+    text-align : right ;
+    font-family : Arial ;
+    font-weight : bold ;
+    font-style : italic ;
+    text-decoration : line-through ;
+    transform : rotate(7deg) ;
+}
+.text90 {
+    color : #000000 ;
+    font-size : 30px ;
+    text-align : left ;
+    font-family : Arial ;
+    font-weight : bold ;
+    font-style : italic ;
+    text-decoration : initial ;
+    transform : rotate(0deg) ;
+}
+.text91 {
+    color : #000000 ;
+    font-size : 30px ;
+    text-align : left ;
+    font-family : Arial ;
+    font-weight : bold ;
+    font-style : italic ;
+    text-decoration : initial ;
+    transform : rotate(0deg) ;
+}

@@ -1,0 +1,28 @@
+ <div id="main-toolbox" class="tools">
+        <ul>
+
+            <li title="Ajouter une zone" class="tool" data-tool="ZoneCreatorTool"><span>Ajouter une zone</span><i class="fal fa-plus-square"></i>
+                {% block zone_creator_tool_sub_menus %}
+                {%  endblock %}
+            </li>
+            <li title="Déplacer" class="tool" data-tool="ZoneDraggerTool"><span>Déplacer</span><i class="fal fa-arrows bold"></i></li>
+            <li title="Supprimer" class="tool" data-tool="ZoneRemoverTool"><span>Supprimer</span><i class="fal fa-trash-alt"></i></li>
+            <li title="Dupliquer" class="tool" data-tool="ZoneDuplicatorTool"><span>Dupliquer</span><i class="fal fa-copy"></i></li>
+            <li title="Transformation" class="tool" data-tool="ZoneResizerTool"><span>Transformation</span><i class="fal fa-vector-square"></i></li>
+            <li title="Arranger" class="tool" data-tool="ZonePriorityManagerTool"><span>Organiser</span><i class="fal fa-layer-group"></i>
+                <ul class="subMenu subTools slider-menu" >
+                    <li title="Avancer une zone" class="tool" data-tool="ZonePriorityAboveTool"><span>Avancer une zone</span><i class="fal fa-layer-plus"></i></li>
+                    <li title="Reculer une zone"class="tool" data-tool= "ZonePriorityBellowTool"><span>Reculer une zone</span><i class="fal fa-layer-minus"></i></li>
+                    <li title="Mettre au premier plan" class="tool" data-tool= "ZonePriorityForegroundTool"><span>Mettre au premier plan</span><i class="fal fa-bring-front"></i></li>
+                    <li title="Mettre en arriere plan" class="tool" data-tool= "ZonePriorityBackgroundTool"><span>Mettre au dernier plan</span><i class="fal fa-send-back"></i></li>
+                </ul>
+            </li>
+            <li title="Zoomer" id="zoom" class="tool" data-tool="ZoneZoomOnTool"><span>Zoomer</span><i class="fal fa-search"></i>
+                <ul class="subMenu subTools slider-menu">
+                    <li title="Agrandir" id="enlarge" class="tool" data-subtool="ZoneZoomIncreaserTool"><span>Agrandir</span><i class="fal fa-search-plus"></i></li>
+                    <li title="Diminuer" id="decrease" class="tool" data-subtool="ZoneZoomDecreaserTool"><span>Diminuer</span><i class="fal fa-search-minus"></i></li>
+                </ul>
+            </li>
+            <li title="Masquet les zones" id="toggle-zone" class="tool" data-tool="ZoneMaskerTool"><span>Masquer les zones</span><i class="fal fa-eye"></i></li>
+        </ul>
+ </div>

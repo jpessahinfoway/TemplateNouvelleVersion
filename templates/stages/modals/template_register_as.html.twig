@@ -1,0 +1,16 @@
+ {% embed '/general/modals/layout/modal_layout.html.twig' %}
+     {% block modal_classes %}modal--small none{% endblock %}
+     {% block modal_id %}id="modal__template-register_as"{% endblock %}
+     {% block title %}Enregister un template sous{% endblock %}
+     {% block modal_content %}
+         <form class="modal__form modal__template-register-as__form" id="modal__template-register-as__form"  action="" method="post">
+             <div class="modal__template-register-as__form__content">
+                 <label for="modal__template-register-as__form__content__template-name" type="text">Nom du template</label>
+                 <input id="modal__template-register-as__form__content__template-name" name="template-name" type="text" required>
+             </div>
+             <div class="modal__form__comfirm modal__template-register_as__form__comfirm">
+                 <button type="submit" class="template-button button comfirm--white">Valider</button>
+             </div>
+         </form>
+     {%  endblock %}
+     {% endembed %}

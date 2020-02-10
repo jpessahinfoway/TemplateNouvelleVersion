@@ -1,0 +1,30 @@
+{% extends 'stages/modals/layout/full_modal_layout.html.twig' %}
+{% block modal_background_classes %}modal__centered modal--comfirm{% endblock %}
+
+    {% block title %}Comfirmation{% endblock %}
+
+    {% block modal_content %}
+        <div class="modal--comfirm__choices-content">Voulez vous vraiment comfirmer </div>
+        <div class="modal--comfirm__choices-buttons">
+            <button id="modal--comfirm__choices-buttons--yes">Yes</button>
+            <button id="modal--comfirm__choices-buttons--no">No</button>
+        </div>
+    {%  endblock %}
+
+
+
+
+{#<div id="choice-background" class="template-menu">#}
+    {#<div id="choice-zone">#}
+        {#<div class="choice-window">#}
+            {#<div class="choice-window__label"><p>Fenetre de choix</p><span class="choice-window__label__close"><i class="fal fa-times"></i></span></div>#}
+            {#<div class="choice-window__content">#}
+                {#<p>Voulez vous confirmer votre choix ?</p>#}
+                {#<div class="choice-window__content__button">#}
+                    {#<button id="choice-window__choice--yes">Oui</button>#}
+                    {#<button id="choice-window__choice--no">Non</button>#}
+                {#</div>#}
+            {#</div>#}
+        {#</div>#}
+    {#</div>#}
+{#</div>#}

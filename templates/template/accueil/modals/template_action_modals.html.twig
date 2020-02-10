@@ -1,0 +1,109 @@
+{% extends '/general/modals/layout/full_modal_layout.html.twig' %}
+ {% block modals_in_background %}
+
+     {% embed '/general/modals/layout/modal_layout.html.twig' %}
+         {% block modal_classes %}modal--large none{% endblock %}
+         {% block modal_id %}id="modal__template-actions--create"{% endblock %}
+         {% block title %}Creer un template{% endblock %}
+         {% block modal_content %}
+             <form class="modal__form modal__template-actions__form" id="modal__template-actions__form--create"  action="{{ path('template::launchStage',{ stage:stage , action: 'create' }) }}" method="post">
+                 <div class="radios-group modal__template-actions__form--orientation">
+                     <span>Orientation du template</span>
+                     <div class="radio">
+                         <input type="radio" name="orientation" id="horizontal" value="H" checked="">
+                         <label for="horizontal">Horizontal</label>
+                     </div>
+                     <div class="radio">
+                         <input type="radio" name="orientation" id="vertical" value="V">
+                         <label for="vertical">Vertical</label>
+                     </div>
+                 </div>
+
+                 {% if creatableTemplates|length >0 %}
+                     <div class="modal__template-actions__form--template-lists">
+                         {% for creatableTemplatesFormat ,creatableTemplates in creatableTemplates %}
+                             {% if creatableTemplatesFormat == 'H' or creatableTemplatesFormat == 'V'%}
+                                 <div class="modal__template-actions__form--template-list modal__template-actions__form--template-list--{{ creatableTemplatesFormat }}" data-orientation="{{ creatableTemplatesFormat }}">
+                                     {% for template in creatableTemplates %}
+                                         {% if template.width is defined and template.height is defined and template.orientation is defined  and template.id is defined %}
+                                             <div class="modal__template-actions__form--template-list__item" data-id="{{ template.id }}">
+                                                 <div class="modal__template-actions__form--template-list__item__container">
+                                                     <div class="template-miniature" style="width : {{ template.width/8 ~ 'px'}}; height : {{ template.height/8 ~ 'px'}};">
+                                                         {%  for zone in template.zones  %}
+                                                             <div class="modal__template-actions__form--template-list__item--zone zone" data-id="{{ zone.id }}" data-type="{{ zone.type }}" style="left : {{ zone.PositionLeft/8 ~ 'px' }} ;top : {{ zone.PositionTop/8 ~ 'px' }}; width : {{ zone.width/8 ~ 'px'}}; height : {{ zone.height/8 ~ 'px'}};"></div>
+                                                         {% endfor %}
+                                                     </div>
+                                                 </div>
+                                                 <div class="modal__template-actions__form--template-list__item__actions">
+                                                     <span>{{ template.name }}</span>
+                                                 </div>
+                                             </div>
+                                         {% endif %}
+                                     {% endfor %}
+                                 </div>
+                             {% endif %}
+                         {% endfor  %}
+                     </div>
+                     <input name="template" type="number" hidden>
+                 {% endif %}
+                 <div class="modal__form__comfirm modal__template-actions__form__comfirm">
+                     <button type="submit" class="button template-button comfirm--white">Valider</button>
+                 </div>
+             </form>
+         {%  endblock %}
+     {% endembed %}
+
+     {% embed '/general/modals/layout/modal_layout.html.twig' %}
+         {% block modal_classes %}modal--large none{% endblock %}
+         {% block modal_id %}id="modal__template-actions--load"{% endblock %}
+         {% block title %}Charger un template{% endblock %}
+         {% block modal_content %}
+             <form class="modal__form modal__template-actions__form" id="modal__template-actions__form--load"  action="{{ path('template::launchStage',{ stage: stage , action: 'load' }) }}" method="post">
+                 <div class="radios-group modal__template-actions__form--orientation">
+                     <span>Orientation du template</span>
+
+                     <div class="radio">
+                         <input type="radio" name="orientation" id="horizontal" value="H" checked>
+                         <label for="horizontal">Horizontal</label>
+                     </div>
+                     <div class="radio">
+                         <input type="radio" name="orientation" id="vertical" value="V">
+                         <label for="vertical">Vertical</label>
+                     </div>
+
+                 </div>
+                 {% if loadableTemplates|length >0 %}
+                     <div class="modal__template-actions__form--template-lists">
+                         {% for loadableTemplatesFormat ,loadableTemplates in loadableTemplates %}
+                             {% if loadableTemplatesFormat == 'H' or loadableTemplatesFormat == 'V'%}
+                                 <div class="modal__template-actions__form--template-list modal__template-actions__form--template-list--{{ loadableTemplatesFormat }}" data-orientation="{{ loadableTemplatesFormat }}">
+                                     {% for template in loadableTemplates %}
+                                         {% if template.width is defined and template.height is defined and template.orientation is defined  and template.id is defined %}
+                                             <div class="modal__template-actions__form--template-list__item" data-id="{{ template.id }}">
+                                                 <div class="modal__template-actions__form--template-list__item__container">
+                                                     <div class="template-miniature" style="width : {{ template.width/8 ~ 'px'}}; height : {{ template.height/8 ~ 'px'}};">
+                                                         {%  for zone in template.zones  %}
+                                                             <div class="modal__template-actions__form--template-list__item--zone zone" data-id="{{ zone.id }}" data-type="{{ zone.type }}" style="left : {{ zone.PositionLeft/8 ~ 'px' }} ;top : {{ zone.PositionTop/8 ~ 'px' }}; width : {{ zone.width/8 ~ 'px'}}; height : {{ zone.height/8 ~ 'px'}};"></div>
+                                                         {% endfor %}
+                                                     </div>
+                                                 </div>
+                                                 <div class="modal__template-actions__form--template-list__item__actions">
+                                                      <span>{{ template.name }}</span>
+                                                 </div>
+                                             </div>
+                                         {% endif %}
+                                     {% endfor %}
+                                 </div>
+                             {% endif %}
+                         {% endfor  %}
+                     </div>
+                     <input name="template" type="number" hidden>
+                 {% endif %}
+                 <div class="modal__form__comfirm modal__template-actions__form__comfirm">
+                     <button type="submit" class="button comfirm--white">Valider</button>
+                 </div>
+             </form>
+         {%  endblock %}
+     {% endembed %}
+
+ {% endblock %}
