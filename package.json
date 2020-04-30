@@ -4,7 +4,7 @@
   "dependencies": {
     "@symfony/webpack-encore": "^0.28.0",
     "flatted": "^2.0",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "json-stringify-safe": "^5.0.1",
     "lodash": "^4.17.15",
     "remove": "^0.1.5",
