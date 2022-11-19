@@ -2,7 +2,7 @@
   "requires": true,
   "lockfileVersion": 1,
   "dependencies": {
-    "@symfony/webpack-encore": "^0.28.0",
+    "@symfony/webpack-encore": "^4.1.1",
     "flatted": "^2.0",
     "jquery": "^3.4.1",
     "json-stringify-safe": "^5.0.1",
